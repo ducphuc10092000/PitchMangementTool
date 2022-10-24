@@ -1,0 +1,16 @@
+D:\PitchManagementTool\Domain.PitchManagementTool\bin\Debug\Domain.PitchManagementTool.dll.config
+D:\PitchManagementTool\Domain.PitchManagementTool\bin\Debug\Domain.PitchManagementTool.dll
+D:\PitchManagementTool\Domain.PitchManagementTool\bin\Debug\Domain.PitchManagementTool.pdb
+D:\PitchManagementTool\Domain.PitchManagementTool\bin\Debug\EntityFramework.dll
+D:\PitchManagementTool\Domain.PitchManagementTool\bin\Debug\EntityFramework.SqlServer.dll
+D:\PitchManagementTool\Domain.PitchManagementTool\bin\Debug\EntityFramework.xml
+D:\PitchManagementTool\Domain.PitchManagementTool\bin\Debug\EntityFramework.SqlServer.xml
+D:\PitchManagementTool\Domain.PitchManagementTool\obj\Debug\Domain.PitchManagementTool.csproj.AssemblyReference.cache
+D:\PitchManagementTool\Domain.PitchManagementTool\obj\Debug\Domain.PitchManagementTool.csproj.CoreCompileInputs.cache
+D:\PitchManagementTool\Domain.PitchManagementTool\obj\Debug\Domain.PitchManagementTool.csproj.CopyComplete
+D:\PitchManagementTool\Domain.PitchManagementTool\obj\Debug\Domain.PitchManagementTool.dll
+D:\PitchManagementTool\Domain.PitchManagementTool\obj\Debug\Domain.PitchManagementTool.pdb
+D:\PitchManagementTool\Domain.PitchManagementTool\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+D:\PitchManagementTool\Domain.PitchManagementTool\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\PitchManagementTool\Domain.PitchManagementTool\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+D:\PitchManagementTool\Domain.PitchManagementTool\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml

@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PITCHMANAGEMENTDBModelStoreContainer" CdmEntityContainer="PITCHMANAGEMENTDBEntities">
+    <EntitySetMapping Name="BOOKINGs">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.BOOKING">
+        <MappingFragment StoreEntitySet="BOOKING">
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="UPDATE_AT" ColumnName="UPDATE_AT" />
+          <ScalarProperty Name="UPDATE_BY_ID_USER" ColumnName="UPDATE_BY_ID_USER" />
+          <ScalarProperty Name="CREATE_AT" ColumnName="CREATE_AT" />
+          <ScalarProperty Name="CREATE_BY_ID_USER" ColumnName="CREATE_BY_ID_USER" />
+          <ScalarProperty Name="PHONE_NUMMBER_CUSTOMER" ColumnName="PHONE_NUMMBER_CUSTOMER" />
+          <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
+          <ScalarProperty Name="CHECK_OUT_TIME" ColumnName="CHECK_OUT_TIME" />
+          <ScalarProperty Name="CHECK_IN_TIME" ColumnName="CHECK_IN_TIME" />
+          <ScalarProperty Name="ID_PITCH" ColumnName="ID_PITCH" />
+          <ScalarProperty Name="ID_BOOKING" ColumnName="ID_BOOKING" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMMODITIES">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.COMMODITy">
+        <MappingFragment StoreEntitySet="COMMODITIES">
+          <ScalarProperty Name="SELL_PRICE" ColumnName="SELL_PRICE" />
+          <ScalarProperty Name="PURCHASE_PRICE" ColumnName="PURCHASE_PRICE" />
+          <ScalarProperty Name="QUANTITY_ON_HAND" ColumnName="QUANTITY_ON_HAND" />
+          <ScalarProperty Name="NAME_COMMODITIES" ColumnName="NAME_COMMODITIES" />
+          <ScalarProperty Name="ID_COMMODITIES" ColumnName="ID_COMMODITIES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMMODITIES_PROVIDER">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.COMMODITIES_PROVIDER">
+        <MappingFragment StoreEntitySet="COMMODITIES_PROVIDER">
+          <ScalarProperty Name="DEBT_COST" ColumnName="DEBT_COST" />
+          <ScalarProperty Name="NAME_COMMODITIES_PROVIDER" ColumnName="NAME_COMMODITIES_PROVIDER" />
+          <ScalarProperty Name="ID_COMMODITIES_PROVIDER" ColumnName="ID_COMMODITIES_PROVIDER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMERs">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="DEBT_COST" ColumnName="DEBT_COST" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="PHONE_NUMBER_CUSTOMER" ColumnName="PHONE_NUMBER_CUSTOMER" />
+          <ScalarProperty Name="NAME_CUSTOMER" ColumnName="NAME_CUSTOMER" />
+          <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMER_PAYMENT_RECEIPT">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT">
+        <MappingFragment StoreEntitySet="CUSTOMER_PAYMENT_RECEIPT">
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="UPDATE_BY_ID_USER" ColumnName="UPDATE_BY_ID_USER" />
+          <ScalarProperty Name="UPDATE_AT" ColumnName="UPDATE_AT" />
+          <ScalarProperty Name="CREATE_BY_ID_USER" ColumnName="CREATE_BY_ID_USER" />
+          <ScalarProperty Name="CREATE_AT" ColumnName="CREATE_AT" />
+          <ScalarProperty Name="TOTAL_COST" ColumnName="TOTAL_COST" />
+          <ScalarProperty Name="ID_CUSTOMER" ColumnName="ID_CUSTOMER" />
+          <ScalarProperty Name="ID_CUSTOMER_PAYMENT_RECEIPT" ColumnName="ID_CUSTOMER_PAYMENT_RECEIPT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES">
+        <MappingFragment StoreEntitySet="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES">
+          <ScalarProperty Name="TOTAL_COST_ACCOMPANIED_SERVICE" ColumnName="TOTAL_COST_ACCOMPANIED_SERVICE" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="ID_COMMODITIES" ColumnName="ID_COMMODITIES" />
+          <ScalarProperty Name="ID_CUSTOMER_PAYMENT_RECEIPT" ColumnName="ID_CUSTOMER_PAYMENT_RECEIPT" />
+          <ScalarProperty Name="ID_RECEIPT_DETAIL_COMMODITIES_SERVICE" ColumnName="ID_RECEIPT_DETAIL_COMMODITIES_SERVICE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH">
+        <MappingFragment StoreEntitySet="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH">
+          <ScalarProperty Name="TOTAL_COST_USED_PITCH" ColumnName="TOTAL_COST_USED_PITCH" />
+          <ScalarProperty Name="ID_BOOKING" ColumnName="ID_BOOKING" />
+          <ScalarProperty Name="ID_CUSTOMER_PAYMENT_RECEIPT" ColumnName="ID_CUSTOMER_PAYMENT_RECEIPT" />
+          <ScalarProperty Name="ID_RECEIPT_DETAIL_USED_PITCH" ColumnName="ID_RECEIPT_DETAIL_USED_PITCH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMPORT_COMMODITIES_RECEIPT">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.IMPORT_COMMODITIES_RECEIPT">
+        <MappingFragment StoreEntitySet="IMPORT_COMMODITIES_RECEIPT">
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="UPDATE_BY_ID_USER" ColumnName="UPDATE_BY_ID_USER" />
+          <ScalarProperty Name="CREATE_BY_ID_USER" ColumnName="CREATE_BY_ID_USER" />
+          <ScalarProperty Name="UPDATE_AT" ColumnName="UPDATE_AT" />
+          <ScalarProperty Name="CREATE_AT" ColumnName="CREATE_AT" />
+          <ScalarProperty Name="ID_COMMODITIES_PROVIDER" ColumnName="ID_COMMODITIES_PROVIDER" />
+          <ScalarProperty Name="TOTAL_COST" ColumnName="TOTAL_COST" />
+          <ScalarProperty Name="ID_IMPORT_COMMODITIES_RECEIPT" ColumnName="ID_IMPORT_COMMODITIES_RECEIPT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMPORT_COMMODITIES_RECEIPT_DETAIL">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.IMPORT_COMMODITIES_RECEIPT_DETAIL">
+        <MappingFragment StoreEntitySet="IMPORT_COMMODITIES_RECEIPT_DETAIL">
+          <ScalarProperty Name="TOTAL_COST" ColumnName="TOTAL_COST" />
+          <ScalarProperty Name="QUANTITY_IMPORT" ColumnName="QUANTITY_IMPORT" />
+          <ScalarProperty Name="ID_COMMODITIES" ColumnName="ID_COMMODITIES" />
+          <ScalarProperty Name="ID_IMPORT_COMMODITIES_RECEIPT" ColumnName="ID_IMPORT_COMMODITIES_RECEIPT" />
+          <ScalarProperty Name="ID_IMPORT_COMMODITIES_RECEIPT_DETAIL" ColumnName="ID_IMPORT_COMMODITIES_RECEIPT_DETAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LINK_PITCH_DETAILS">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.LINK_PITCH_DETAILS">
+        <MappingFragment StoreEntitySet="LINK_PITCH_DETAILS">
+          <ScalarProperty Name="ID_CHILDREN_PITCH" ColumnName="ID_CHILDREN_PITCH" />
+          <ScalarProperty Name="ID_PARENT_PITCH" ColumnName="ID_PARENT_PITCH" />
+          <ScalarProperty Name="ID_LINK_PITCH_DETAILS" ColumnName="ID_LINK_PITCH_DETAILS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PITCHes">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.PITCH">
+        <MappingFragment StoreEntitySet="PITCH">
+          <ScalarProperty Name="IS_CHILDREN" ColumnName="IS_CHILDREN" />
+          <ScalarProperty Name="IS_USING" ColumnName="IS_USING" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="UPDATE_AT" ColumnName="UPDATE_AT" />
+          <ScalarProperty Name="UPDATE_BY_ID_USER" ColumnName="UPDATE_BY_ID_USER" />
+          <ScalarProperty Name="CREATE_AT" ColumnName="CREATE_AT" />
+          <ScalarProperty Name="CREATE_BY_ID_USER" ColumnName="CREATE_BY_ID_USER" />
+          <ScalarProperty Name="PITCH_TYPE_ID" ColumnName="PITCH_TYPE_ID" />
+          <ScalarProperty Name="NAME_PITCH" ColumnName="NAME_PITCH" />
+          <ScalarProperty Name="ID_PITCH" ColumnName="ID_PITCH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PITCH_TYPE">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.PITCH_TYPE">
+        <MappingFragment StoreEntitySet="PITCH_TYPE">
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="UPDATE_BY_ID_USER" ColumnName="UPDATE_BY_ID_USER" />
+          <ScalarProperty Name="CREATE_BY_ID_USER" ColumnName="CREATE_BY_ID_USER" />
+          <ScalarProperty Name="NAME_PITCH_TYPE" ColumnName="NAME_PITCH_TYPE" />
+          <ScalarProperty Name="ID_PITCH_TYPE" ColumnName="ID_PITCH_TYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_ROLES">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.USER_ROLES">
+        <MappingFragment StoreEntitySet="USER_ROLES">
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="ROLE_NAME" ColumnName="ROLE_NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="PITCHMANAGEMENTDBModel.USER">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
+          <ScalarProperty Name="UPDATE_BY_ID_USER" ColumnName="UPDATE_BY_ID_USER" />
+          <ScalarProperty Name="CREATE_BY_ID_USER" ColumnName="CREATE_BY_ID_USER" />
+          <ScalarProperty Name="ID_ROLE_NAME" ColumnName="ID_ROLE_NAME" />
+          <ScalarProperty Name="IS_DELETED" ColumnName="IS_DELETED" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="FULL_NAME" ColumnName="FULL_NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

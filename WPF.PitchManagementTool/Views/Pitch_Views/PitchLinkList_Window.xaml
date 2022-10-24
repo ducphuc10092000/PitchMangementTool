@@ -1,0 +1,147 @@
+﻿<Window x:Class="WPF.PitchManagementTool.Views.Pitch_Views.PitchLinkList_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.PitchManagementTool.Views.Pitch_Views"
+        mc:Ignorable="d"
+        WindowStyle="None" 
+        Height="850" Width="1600"
+        DataContext="{StaticResource pitchmanage_UC_VM}"
+        x:Name="pitchLinkList_WD"
+        Title="Danh sách sân liên kết"
+        WindowStartupLocation="CenterScreen"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                BorderBrush="#FF78F14D"
+                BorderThickness="2"
+                Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <TextBlock Text="DANH SÁCH SÂN BÓNG CÓ THỂ LIÊN KẾT"
+                               FontSize="25"
+                               FontFamily="Open Sans"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Height="auto"
+                      Width="1560">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <DataGrid ItemsSource="{Binding PITCHLINKLIST,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
+                                  AlternatingRowBackground="LightGreen"
+                                  IsReadOnly="True"
+                                  SelectedItem="{Binding selectedPitch,UpdateSourceTrigger=PropertyChanged,
+                            NotifyOnSourceUpdated=True}"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                  AutoGenerateColumns="False"
+                                  CanUserResizeColumns="False"
+                                  CanUserReorderColumns="False">
+                            <DataGrid.InputBindings>
+                                <MouseBinding Gesture="LeftDoubleClick"
+                                              Command="{Binding btnSelectedPitchLinkCommand}"
+                                              CommandParameter="{Binding ElementName=pitchLinkList_WD}" />
+                            </DataGrid.InputBindings>
+                            <DataGrid.Resources>
+                                <Style TargetType="DataGridRow">
+                                    <Setter Property="Height"
+                                            Value="35"></Setter>
+                                    <Setter Property="FontSize"
+                                            Value="13"></Setter>
+                                    <Setter Property="FontFamily"
+                                            Value="Arial"></Setter>
+                                </Style>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="Height"
+                                            Value="30"></Setter>
+                                    <Setter Property="FontFamily"
+                                            Value="Times New Roman"></Setter>
+                                    <Setter Property="FontSize"
+                                            Value="15"></Setter>
+                                    <Setter Property="FontWeight"
+                                            Value="Bold"></Setter>
+                                    <Setter Property="HorizontalContentAlignment"
+                                            Value="Center"></Setter>
+                                    <Setter Property="VerticalContentAlignment"
+                                            Value="Center"></Setter>
+                                    <Setter Property="Background"
+                                            Value="White"></Setter>
+                                    <Setter Property="BorderBrush"
+                                            Value="#6c757d"></Setter>
+                                    <Setter Property="BorderThickness"
+                                            Value="1,1,0,1"></Setter>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <!--Cột Mã DTQ-->
+                                <DataGridTextColumn Header="ID Sân bóng"
+                                                    Width="100"
+                                                    Binding="{Binding ID_PITCH}">
+                                </DataGridTextColumn>
+                                <!--Cột TÊN sân bóng-->
+                                <DataGridTextColumn Header="Loại sân bóng"
+                                                    Binding="{Binding PITCH_TYPE.NAME_PITCH_TYPE}"
+                                                    Width="200"></DataGridTextColumn>
+                                <!--Tỉnh thành-->
+                                <DataGridTextColumn Header="Tên sân bóng"
+                                                    Binding="{Binding NAME_PITCH}"
+                                                    Width="200"></DataGridTextColumn>
+                                <!--Tỉnh thành-->
+                                <DataGridTextColumn Header="Mô tả"
+                                                    Width="300"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1"
+                BorderBrush="#FF78F14D"
+                BorderThickness="2"
+                Margin="2">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <Border BorderBrush="LightGreen"
+                        BorderThickness="1"
+                        CornerRadius="10"
+                        Width="250"
+                        Margin="10,0,0,0">
+                    <TextBox Height="50"
+                             IsReadOnly="True"
+                             TextWrapping="Wrap"
+                             Text="{Binding pitchNameSearch}"
+                             VerticalAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             HorizontalContentAlignment="Left"
+                             FontSize="17"
+                             MaxLength="30"
+                             Margin="10,0,10,0"
+                             materialDesign:HintAssist.Hint="Nhập tên sân để tìm kiếm">
+                    </TextBox>
+                </Border>
+                <Button Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+                        Margin="20,0,0,0"
+                        Foreground="White"
+                        Command="{Binding btnFilterPitchBaseNamePitchCommand}"
+                        FontSize="17"
+                        Content="Lọc"
+                        Width="150"
+                        Height="40" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

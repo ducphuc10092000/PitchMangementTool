@@ -1,0 +1,157 @@
+﻿<UserControl x:Class="WPF.PitchManagementTool.Views.Pitch_Views.PitchManage_Usercontrol"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WPF.PitchManagementTool.Views.Pitch_Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:behav="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d"
+             DataContext="{StaticResource pitchmanage_UC_VM}"
+             Background="Transparent"
+             d:DesignHeight="850"
+             d:DesignWidth="1600">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                BorderBrush="#FF78F14D"
+                BorderThickness="2"
+                Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <TextBlock Text="DANH SÁCH SÂN BÓNG"
+                               FontSize="25"
+                               FontFamily="Open Sans"
+                               FontWeight="SemiBold"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Height="auto"
+                      Width="1560">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <ItemsControl x:Name="PitchDiagramFrame"
+                                      ItemsSource="{Binding PITCHLISTBYFILTER}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel  Orientation="Horizontal"></WrapPanel>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <!--<DataTemplate.Triggers>
+                                        <DataTrigger Binding="{Binding IS_USING}"
+                                                     Value="true">
+                                            <DataTrigger.Setters>
+                                                <Setter Property="Grid.Background"
+                                                        Value="Red"
+                                                        TargetName="gridTemplate" />
+                                            </DataTrigger.Setters>
+                                        </DataTrigger>
+                                    </DataTemplate.Triggers>-->
+                                    <Grid Height="200"
+                                          Width="345"
+                                          Margin="20"
+                                          x:Name="gridTemplate">
+                                        <Grid.Background>
+                                            <ImageBrush ImageSource="D:\PitchManagementTool\WPF.PitchManagementTool\ResourceMedia\template1.png"></ImageBrush>
+                                        </Grid.Background>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="{Binding PITCH_TYPE.NAME_PITCH_TYPE}"
+                                                       FontSize="20"
+                                                       Foreground="White"
+                                                       Margin="10,10,0,0"></TextBlock>
+                                            <TextBlock Text="{Binding NAME_PITCH}"
+                                                       FontSize="20"
+                                                       Foreground="White"
+                                                       Margin="10,10,0,0"></TextBlock>
+                                            <StackPanel HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Orientation="Horizontal"
+                                                        Margin="10,90,10,0">
+                                                <Button Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}"
+                                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.btnDetailPitchCommand}"
+                                                        CommandParameter="{Binding Path=ID_PITCH}"
+                                                        ToolTip="MaterialDesignFlatAccentBackgroundButton"
+                                                        Foreground="White"
+                                                        HorizontalAlignment="Center"
+                                                        Content="Chi tiết sân" />
+                                                <Button Style="{StaticResource MaterialDesignFlatSecondaryMidBgButton}"
+                                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}, Path=DataContext.btnBookingPitchCommand}"
+                                                        CommandParameter="{Binding Path=ID_PITCH}"
+                                                        ToolTip="MaterialDesignFlatAccentBackgroundButton"
+                                                        Foreground="White"
+                                                        HorizontalAlignment="Center"
+                                                        Margin="50,0,0,0"
+                                                        Content="Lịch đặt sân" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1"
+                BorderBrush="#FF78F14D"
+                BorderThickness="2"
+                Margin="2">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center">
+
+                <ComboBox x:Name="PitchTypeListComboBox"
+                          Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                          materialDesign:HintAssist.Hint="Loại sân"
+                          FontSize="17"
+                          Width="256"
+                          Margin="20,0,0,0"
+                          ItemsSource="{Binding PITCHTYPELISTCOMBOBOX}"
+                          SelectedItem="{Binding selectedPitchType, UpdateSourceTrigger=PropertyChanged}"
+                          SelectedIndex="0">
+                    <behav:Interaction.Triggers>
+                        <behav:EventTrigger EventName="SelectionChanged">
+                            <behav:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=DataContext.PitchTypeListChangedCommand}"
+                                                       CommandParameter="{Binding ElementName=PitchTypeListComboBox}" />
+                        </behav:EventTrigger>
+                    </behav:Interaction.Triggers>
+                </ComboBox>
+                <!--<CheckBox IsThreeState="False"
+                          Margin="20 0 0 0"
+                          FontSize="17"
+                          IsChecked="False"
+                          FontFamily="Open Sans"
+                          Content="Sân trống" />-->
+                <Button Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+                        Margin="20,0,0,0"
+                        Foreground="White"
+                        Command="{Binding btnFilterPitchBaseTypeCommand}"
+                        FontSize="17"
+                        Content="Lọc"
+                        Width="150"
+                        Height="40" />
+                <Button Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+                        Margin="20,0,0,0"
+                        Foreground="White"
+                        Command="{Binding btnAddNewPitchCommand}"
+                        FontSize="17"
+                        Content="Thêm mới sân bóng"
+                        Width="200"
+                        Height="40" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

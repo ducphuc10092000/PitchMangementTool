@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels"
+                    xmlns:login_viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels.Login_ViewModels"
+                    xmlns:pitchmanage_viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels.Pitch_ViewModels"
+                    xmlns:accountmanage_viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels.Account_ViewModels">
+    <viewmodel:MainViewModel x:Key="Main_VM"></viewmodel:MainViewModel>
+    
+    <login_viewmodel:Login_Window_ViewModel x:Key="login_WD_VM"></login_viewmodel:Login_Window_ViewModel>
+    
+    <pitchmanage_viewmodel:PitchManage_Usercontrol_ViewModel x:Key="pitchmanage_UC_VM"></pitchmanage_viewmodel:PitchManage_Usercontrol_ViewModel>
+    <pitchmanage_viewmodel:AddNewPitch_Window_ViewModel x:Key="addNewPitch_WD_VM"></pitchmanage_viewmodel:AddNewPitch_Window_ViewModel>
+    
+    <accountmanage_viewmodel:AdminSide_Usercontrol_ViewModel x:Key="adminSide_UC_VM"></accountmanage_viewmodel:AdminSide_Usercontrol_ViewModel>
+    <accountmanage_viewmodel:AccountManage_Usercontrol_ViewModel x:Key="accountManage_UC_VM"></accountmanage_viewmodel:AccountManage_Usercontrol_ViewModel>
+</ResourceDictionary>

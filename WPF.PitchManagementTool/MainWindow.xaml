@@ -1,0 +1,537 @@
+﻿<Window x:Class="WPF.PitchManagementTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.PitchManagementTool"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:behav="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResizeWithGrip"
+        FontFamily="Open Sans"
+        DataContext="{StaticResource Main_VM}"
+        x:Name="Main_WD"
+        Title="Quản lý sân bóng"
+        Height="900"
+        Width="1600"
+        xmlns:Dashboard_UC="clr-namespace:WPF.PitchManagementTool.Views.Dashboard_Views"
+        xmlns:Pitch_UC="clr-namespace:WPF.PitchManagementTool.Views.Pitch_Views"
+        xmlns:Account_UC="clr-namespace:WPF.PitchManagementTool.Views.Account_Views">
+    <behav:Interaction.Triggers>
+        <behav:EventTrigger EventName="Loaded">
+            <behav:InvokeCommandAction Command="{Binding LoadedWindowCommand}"
+                                       CommandParameter="{Binding ElementName=Main_WD}" />
+        </behav:EventTrigger>
+    </behav:Interaction.Triggers>
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="BorderNavigation"
+                   TargetType="Border">
+                <Setter Property="BorderBrush"
+                        Value="#FF4DDA55"></Setter>
+                <Setter Property="BorderThickness"
+                        Value="2"></Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <!--Buttion Navigation-->
+
+                <!--BUTTON DASHBOARD-->
+                <Border Grid.Column="0"
+                        Style="{StaticResource BorderNavigation}"
+                        BorderThickness="2">
+                    <Button Height="36"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Command="{Binding BtnDashBoardCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <!--Content-->
+                            <TextBlock Text="Dashboard"
+                                       FontSize="15">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Feature}"
+                                                         Value="0">
+                                                <Setter Property="FontWeight"
+                                                        Value="Bold"></Setter>
+                                                <Setter Property="Foreground"
+                                                        Value="White"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                        <Button.Style>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="BorderThickness"
+                                        Value="0"></Setter>
+                                <Setter Property="FontWeight"
+                                        Value="Normal"></Setter>
+                                <Setter Property="Background"
+                                        Value="White"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Feature}"
+                                                 Value="0">
+                                        <Setter Property="FontWeight"
+                                                Value="Bold"></Setter>
+                                        <Setter Property="Foreground"
+                                                Value="White"></Setter>
+                                        <Setter Property="Background"
+                                                Value="#FF4DDA55"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
+
+                <!--BUTTON PITCHMANAGE-->
+                <Border Grid.Column="1"
+                        Style="{StaticResource BorderNavigation}"
+                        BorderThickness="2">
+                    <Button Height="36"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Command="{Binding BtnPitchManageCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <!--Content-->
+                            <TextBlock Text="Quản lý sân bóng"
+                                       FontSize="15">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Feature}"
+                                                         Value="1">
+                                                <Setter Property="FontWeight"
+                                                        Value="Bold"></Setter>
+                                                <Setter Property="Foreground"
+                                                        Value="White"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                        <Button.Style>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="BorderThickness"
+                                        Value="0"></Setter>
+                                <Setter Property="FontWeight"
+                                        Value="Normal"></Setter>
+                                <Setter Property="Background"
+                                        Value="White"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Feature}"
+                                                 Value="1">
+                                        <Setter Property="FontWeight"
+                                                Value="Bold"></Setter>
+                                        <Setter Property="Foreground"
+                                                Value="White"></Setter>
+                                        <Setter Property="Background"
+                                                Value="#FF4DDA55"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
+
+                <!--BUTTON BOOKING-->
+                <Border Grid.Column="2"
+                        Style="{StaticResource BorderNavigation}"
+                        BorderThickness="2">
+                    <Button Height="36"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Command="{Binding BtnBookingCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <!--Content-->
+                            <TextBlock Text="Đặt sân"
+                                       FontSize="15">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Feature}"
+                                                         Value="2">
+                                                <Setter Property="FontWeight"
+                                                        Value="Bold"></Setter>
+                                                <Setter Property="Foreground"
+                                                        Value="White"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                        <Button.Style>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="BorderThickness"
+                                        Value="0"></Setter>
+                                <Setter Property="FontWeight"
+                                        Value="Normal"></Setter>
+                                <Setter Property="Background"
+                                        Value="White"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Feature}"
+                                                 Value="2">
+                                        <Setter Property="FontWeight"
+                                                Value="Bold"></Setter>
+                                        <Setter Property="Foreground"
+                                                Value="White"></Setter>
+                                        <Setter Property="Background"
+                                                Value="#FF4DDA55"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
+
+                <!--BUTTON PRINT RECEIPT-->
+                <Border Grid.Column="3"
+                        Style="{StaticResource BorderNavigation}"
+                        BorderThickness="2">
+                    <Button Height="36"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Command="{Binding BtnPrintingReceiptCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <!--Content-->
+                            <TextBlock Text="In hóa đơn"
+                                       FontSize="15">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Feature}"
+                                                         Value="3">
+                                                <Setter Property="FontWeight"
+                                                        Value="Bold"></Setter>
+                                                <Setter Property="Foreground"
+                                                        Value="White"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                        <Button.Style>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="BorderThickness"
+                                        Value="0"></Setter>
+                                <Setter Property="FontWeight"
+                                        Value="Normal"></Setter>
+                                <Setter Property="Background"
+                                        Value="White"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Feature}"
+                                                 Value="3">
+                                        <Setter Property="FontWeight"
+                                                Value="Bold"></Setter>
+                                        <Setter Property="Foreground"
+                                                Value="White"></Setter>
+                                        <Setter Property="Background"
+                                                Value="#FF4DDA55"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
+
+                <!--BUTTON INVENTORY-->
+                <Border Grid.Column="4"
+                        Style="{StaticResource BorderNavigation}"
+                        BorderThickness="2">
+                    <Button Height="36"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Command="{Binding BtnInventoryManageCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <!--Content-->
+                            <TextBlock Text="Quản lý kho"
+                                       FontSize="15">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Feature}"
+                                                         Value="4">
+                                                <Setter Property="FontWeight"
+                                                        Value="Bold"></Setter>
+                                                <Setter Property="Foreground"
+                                                        Value="White"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                        <Button.Style>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="BorderThickness"
+                                        Value="0"></Setter>
+                                <Setter Property="FontWeight"
+                                        Value="Normal"></Setter>
+                                <Setter Property="Background"
+                                        Value="White"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Feature}"
+                                                 Value="4">
+                                        <Setter Property="FontWeight"
+                                                Value="Bold"></Setter>
+                                        <Setter Property="Foreground"
+                                                Value="White"></Setter>
+                                        <Setter Property="Background"
+                                                Value="#FF4DDA55"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
+
+                <!--BUTTON DEBT COST-->
+                <Border Grid.Column="5"
+                        Style="{StaticResource BorderNavigation}"
+                        BorderThickness="2">
+                    <Button Height="36"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Command="{Binding BtnDebtManageCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <!--Content-->
+                            <TextBlock Text="Quản lý thu chi"
+                                       FontSize="15">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Feature}"
+                                                         Value="5">
+                                                <Setter Property="FontWeight"
+                                                        Value="Bold"></Setter>
+                                                <Setter Property="Foreground"
+                                                        Value="White"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                        <Button.Style>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="BorderThickness"
+                                        Value="0"></Setter>
+                                <Setter Property="FontWeight"
+                                        Value="Normal"></Setter>
+                                <Setter Property="Background"
+                                        Value="White"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Feature}"
+                                                 Value="5">
+                                        <Setter Property="FontWeight"
+                                                Value="Bold"></Setter>
+                                        <Setter Property="Foreground"
+                                                Value="White"></Setter>
+                                        <Setter Property="Background"
+                                                Value="#FF4DDA55"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
+
+                <!--BUTTON SETTING-->
+                <Border Grid.Column="6"
+                        Style="{StaticResource BorderNavigation}"
+                        BorderThickness="2">
+                    <Button Height="36"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Command="{Binding BtnSettingCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <!--Content-->
+                            <TextBlock Text="Cài đặt"
+                                       FontSize="15">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Feature}"
+                                                         Value="6">
+                                                <Setter Property="FontWeight"
+                                                        Value="Bold"></Setter>
+                                                <Setter Property="Foreground"
+                                                        Value="White"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                        <Button.Style>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="BorderThickness"
+                                        Value="0"></Setter>
+                                <Setter Property="FontWeight"
+                                        Value="Normal"></Setter>
+                                <Setter Property="Background"
+                                        Value="White"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Feature}"
+                                                 Value="6">
+                                        <Setter Property="FontWeight"
+                                                Value="Bold"></Setter>
+                                        <Setter Property="Foreground"
+                                                Value="White"></Setter>
+                                        <Setter Property="Background"
+                                                Value="#FF4DDA55"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
+                <!--BUTTON ACCOUNT-->
+                <Border Grid.Column="7"
+                        Style="{StaticResource BorderNavigation}"
+                        BorderThickness="2">
+                    <Button Height="36"
+                            BorderThickness="0"
+                            FontWeight="Bold"
+                            Command="{Binding BtnAccountManageCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <!--Content-->
+                            <TextBlock Text="Tài khoản"
+                                       FontSize="15">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Feature}"
+                                                         Value="7">
+                                                <Setter Property="FontWeight"
+                                                        Value="Bold"></Setter>
+                                                <Setter Property="Foreground"
+                                                        Value="White"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </StackPanel>
+                        <Button.Style>
+                            <Style TargetType="Button"
+                                   BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                                <Setter Property="BorderThickness"
+                                        Value="0"></Setter>
+                                <Setter Property="FontWeight"
+                                        Value="Normal"></Setter>
+                                <Setter Property="Background"
+                                        Value="White"></Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Feature}"
+                                                 Value="7">
+                                        <Setter Property="FontWeight"
+                                                Value="Bold"></Setter>
+                                        <Setter Property="Foreground"
+                                                Value="White"></Setter>
+                                        <Setter Property="Background"
+                                                Value="#FF4DDA55"></Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
+            </Grid>
+        </Border>
+
+        
+        <!--SWAP USERCONTROLS-->
+        
+        <!--DASHBOARD USERCONTROL-->
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility"
+                                Value="Hidden"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Feature}"
+                                         Value="0">
+                                <Setter Property="Visibility"
+                                        Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Dashboard_UC:DashBoard_Usercontrol></Dashboard_UC:DashBoard_Usercontrol>
+            </Grid>
+        </Border>
+        
+        <!--PITCHMANAGE USERCONTROL-->
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility"
+                                Value="Hidden"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Feature}"
+                                         Value="1">
+                                <Setter Property="Visibility"
+                                        Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Pitch_UC:PitchManage_Usercontrol></Pitch_UC:PitchManage_Usercontrol>
+            </Grid>
+        </Border>
+
+        <!--PITCHMANAGE USERCONTROL-->
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility"
+                                Value="Hidden"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Feature}"
+                                         Value="7">
+                                <Setter Property="Visibility"
+                                        Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Account_UC:AccountManage_Usercontrol></Account_UC:AccountManage_Usercontrol>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
