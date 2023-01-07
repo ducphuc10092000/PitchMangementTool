@@ -18,6 +18,7 @@ namespace WPF.PitchManagementTool.ViewModels.Pitch_ViewModels
         //Logged Account
         private USER _loggedInAccount;
         public USER loggedInAccount { get => _loggedInAccount; set { _loggedInAccount = value; OnPropertyChanged(); } }
+
         //Combobox PITCHTYPE
         private ObservableCollection<string> _PITCHTYPELISTCOMBOBOX;
         public ObservableCollection<string> PITCHTYPELISTCOMBOBOX { get => _PITCHTYPELISTCOMBOBOX; set { _PITCHTYPELISTCOMBOBOX = value; OnPropertyChanged(); } }

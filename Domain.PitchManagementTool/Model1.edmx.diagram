@@ -4,33 +4,37 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9828ee43804a4dd7a6a573facd209412" Name="Diagram1" ZoomLevel="62">
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.BOOKING" Width="1.5" PointX="5.25" PointY="3.125" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.COMMODITy" Width="1.5" PointX="8.25" PointY="5" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.COMMODITIES_PROVIDER" Width="1.5" PointX="3" PointY="17.25" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.CUSTOMER" Width="1.5" PointX="3" PointY="2.375" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT" Width="1.5" PointX="8.25" PointY="8.5" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" Width="1.5" PointX="10.5" PointY="3" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" Width="1.5" PointX="10.5" PointY="6.375" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.IMPORT_COMMODITIES_RECEIPT" Width="1.5" PointX="5.25" PointY="8.5" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.IMPORT_COMMODITIES_RECEIPT_DETAIL" Width="1.5" PointX="10.5" PointY="10" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.LINK_PITCH_DETAILS" Width="1.5" PointX="7.5" PointY="14.125" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.PITCH" Width="1.5" PointX="5.25" PointY="13.125" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.PITCH_TYPE" Width="1.5" PointX="3" PointY="14" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.USER_ROLES" Width="1.5" PointX="0.75" PointY="9.25" />
-        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.USER" Width="1.5" PointX="3" PointY="7.875" />
-        <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_BOOKING_CUSTOMER" />
+      <Diagram DiagramId="9828ee43804a4dd7a6a573facd209412" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.BOOKING" Width="1.5" PointX="7.5" PointY="9" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.COMMODITy" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.COMMODITIES_PROVIDER" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.CUSTOMER" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT" Width="1.5" PointX="9.75" PointY="9.125" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" Width="1.5" PointX="12" PointY="10" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.EXPORT_COMMODITIES_RECEIPT" Width="1.5" PointX="5.25" PointY="23.875" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.EXPORT_COMMODITIES_RECEIPT_DETAIL" Width="1.5" PointX="7.5" PointY="24.25" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.IMPORT_COMMODITIES_RECEIPT" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.IMPORT_COMMODITIES_RECEIPT_DETAIL" Width="1.5" PointX="7.5" PointY="5" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.LINK_PITCH_DETAILS" Width="1.5" PointX="7.5" PointY="14.25" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.PITCH" Width="1.5" PointX="5.25" PointY="9.125" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.PITCH_TYPE" Width="1.5" PointX="3" PointY="15" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.sysdiagram" Width="1.5" PointX="7.75" PointY="1.75" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.USER_ROLES" Width="1.5" PointX="0.75" PointY="10.375" />
+        <EntityTypeShape EntityType="PITCHMANAGEMENTDBModel.USER" Width="1.5" PointX="3" PointY="8.75" />
         <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_BOOKING_PITCH" />
         <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_BOOKING_USER_CREATE" />
         <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_BOOKING_USER_UPDATE" />
-        <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_BOOKING" />
+        <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_BOOKING" />
         <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_COMMODITIES" />
+        <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES" />
         <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_IMPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES" />
         <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_IMPORT_COMMODITIES_RECEIPT_COMMODITIES_PROVIDER" />
-        <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_CUSTOMER" />
-        <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_CUSTOMER_PAYMENT_RECEIPT" />
+        <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_CUSTOMER_PAYMENT_RECEIPT" />
         <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_USER_CREATE" />
         <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_USER_UPDATE" />
+        <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_CREATE_USER" />
+        <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_DETAIL" />
+        <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_UPDATE_USER" />
         <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_IMPORT_COMMODITIES_RECEIPT_DETAIL_IMPORT_COMMODITIES_RECEIPT" />
         <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_IMPORT_COMMODITIES_RECEIPT_USER_CREATE" />
         <AssociationConnector Association="PITCHMANAGEMENTDBModel.fk_IMPORT_COMMODITIES_RECEIPT_USER_UPDATE" />

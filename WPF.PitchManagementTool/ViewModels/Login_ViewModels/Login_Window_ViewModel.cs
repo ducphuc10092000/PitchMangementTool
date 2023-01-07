@@ -21,6 +21,10 @@ namespace WPF.PitchManagementTool.ViewModels.Login_ViewModels
         public string passWord { get => _passWord; set { _passWord = value; OnPropertyChanged(nameof(passWord)); } }
 
 
+        private USER _loggedInAccount;
+        public USER loggedInAccount { get => _loggedInAccount; set { _loggedInAccount = value; OnPropertyChanged(); } }
+
+
         public bool _isCloseLoginWD;
         public bool isCloseLoginWD { get => _isCloseLoginWD; set { _isCloseLoginWD = value; OnPropertyChanged(nameof(isCloseLoginWD)); } }
 
@@ -33,8 +37,8 @@ namespace WPF.PitchManagementTool.ViewModels.Login_ViewModels
         #endregion
         public Login_Window_ViewModel()
         {
-            Load_login_WD();
             isCloseLoginWD = false;
+            Load_login_WD();
 
             #region Handling command button
 
@@ -67,7 +71,10 @@ namespace WPF.PitchManagementTool.ViewModels.Login_ViewModels
                 }
                 else
                 {
-                    Authentication_Login(p);
+                    if (Authentication_Login(p) != null)
+                    {
+                        isCloseLoginWD = true;
+                    }    
                 }
             });
 
@@ -88,8 +95,6 @@ namespace WPF.PitchManagementTool.ViewModels.Login_ViewModels
         }
         public USER Authentication_Login(Window login_WD)
         {
-
-
             UserService userService = new UserService();
 
 

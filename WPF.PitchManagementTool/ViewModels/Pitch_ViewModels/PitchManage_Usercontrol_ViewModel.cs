@@ -55,7 +55,6 @@ namespace WPF.PitchManagementTool.ViewModels.Pitch_ViewModels
         #region COMMAND INPUT BY USER
 
         public ICommand btnAddNewPitchCommand { get; set; }
-        public ICommand MouseDoubleClickOnPitchCommand { get; set; }
         public ICommand btnFilterPitchBaseTypeCommand { get; set; }
 
         public ICommand btnDetailPitchCommand { get; set; }
@@ -84,14 +83,6 @@ namespace WPF.PitchManagementTool.ViewModels.Pitch_ViewModels
 
                 SetUpDataPitchList();
             });
-            MouseDoubleClickOnPitchCommand = new RelayCommand<Window>((p) =>
-            {
-                return true;
-            }, (p) =>
-            {
-                AddNewPitch_Window addNewPitch_Window = new AddNewPitch_Window();
-                addNewPitch_Window.ShowDialog();
-            });
             btnFilterPitchBaseTypeCommand = new RelayCommand<object>((p) =>
             {
                 return true;
@@ -104,7 +95,53 @@ namespace WPF.PitchManagementTool.ViewModels.Pitch_ViewModels
                 return true;
             }, (p) =>
             {
-                MessageBox.Show(p.ToString());
+                DetailsPitch_Window detailsPitch_Window = new DetailsPitch_Window();
+                var detailsPitch_Window_VM = detailsPitch_Window.DataContext as AddNewPitch_Window_ViewModel;
+                detailsPitch_Window_VM.loggedInAccount = loggedInAccount;
+
+                selectedPitch = DataProvider.Ins.DB.PITCHes.Where(x => x.ID_PITCH.ToString() == p.ToString()).FirstOrDefault();
+
+                detailsPitch_Window_VM.pitchName = selectedPitch.NAME_PITCH;
+                detailsPitch_Window_VM.selectedPitchType = selectedPitch.PITCH_TYPE.NAME_PITCH_TYPE;
+                if (selectedPitch.PITCH_TYPE.NAME_PITCH_TYPE == "Sân 5 người")
+                {
+                    PITCH tempPitch = new PITCH();
+                    tempPitch.NAME_PITCH = "Sân 5 người không có sân liên kết";
+                    detailsPitch_Window_VM.pitchLink1 = tempPitch;
+                    detailsPitch_Window_VM.pitchLink2 = tempPitch;
+                    detailsPitch_Window_VM.pitchLink3 = tempPitch;
+                }
+
+                if(selectedPitch.PITCH_TYPE.NAME_PITCH_TYPE == "Sân 7 người")
+                {
+                    List<LINK_PITCH_DETAILS> tempListPitchLink = DataProvider.Ins.DB.LINK_PITCH_DETAILS.Where(x => x.ID_PARENT_PITCH == selectedPitch.ID_PITCH).ToList();
+
+                    List<PITCH> tempPitchList = new List<PITCH>();
+                    foreach(var item in tempListPitchLink)
+                    {
+                        tempPitchList.Add(DataProvider.Ins.DB.PITCHes.Where(x => x.ID_PITCH == item.ID_CHILDREN_PITCH).FirstOrDefault());
+                    }    
+
+                    detailsPitch_Window_VM.pitchLink1 = tempPitchList[0]; 
+                    detailsPitch_Window_VM.pitchLink2 = tempPitchList[1];
+                    detailsPitch_Window_VM.pitchLink3 = tempPitchList[2];
+                }
+                if (selectedPitch.PITCH_TYPE.NAME_PITCH_TYPE == "Sân 11 người")
+                {
+                    List<LINK_PITCH_DETAILS> tempListPitchLink = DataProvider.Ins.DB.LINK_PITCH_DETAILS.Where(x => x.ID_PARENT_PITCH == selectedPitch.ID_PITCH).ToList();
+
+                    List<PITCH> tempPitchList = new List<PITCH>();
+                    foreach (var item in tempListPitchLink)
+                    {
+                        tempPitchList.Add(DataProvider.Ins.DB.PITCHes.Where(x => x.ID_PITCH == item.ID_CHILDREN_PITCH).FirstOrDefault());
+                    }
+
+                    detailsPitch_Window_VM.pitchLink1 = tempPitchList[0];
+                    detailsPitch_Window_VM.pitchLink2 = tempPitchList[1];
+                }
+
+                detailsPitch_Window.ShowDialog();
+                SetUpDataPitchList();
             });
             btnBookingPitchCommand = new RelayCommand<object>((p) =>
             {

@@ -17,21 +17,26 @@ namespace Domain.PitchManagementTool
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CUSTOMER_PAYMENT_RECEIPT()
         {
-            this.CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH = new HashSet<CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH>();
+            this.CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES = new HashSet<CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES>();
         }
     
         public int ID_CUSTOMER_PAYMENT_RECEIPT { get; set; }
-        public int ID_CUSTOMER { get; set; }
         public string TOTAL_COST { get; set; }
         public System.DateTime CREATE_AT { get; set; }
         public int CREATE_BY_ID_USER { get; set; }
         public Nullable<System.DateTime> UPDATE_AT { get; set; }
         public Nullable<int> UPDATE_BY_ID_USER { get; set; }
         public bool IS_DELETED { get; set; }
+        public int ID_BOOKING { get; set; }
+        public string COST_USED_PITCH { get; set; }
+        public string COST_COMMODITIES_SERVICE { get; set; }
+        public string IS_DONE { get; set; }
+        public string COST_UNPAID { get; set; }
+        public string COST_PAID { get; set; }
     
-        public virtual CUSTOMER CUSTOMER { get; set; }
+        public virtual BOOKING BOOKING { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH> CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH { get; set; }
+        public virtual ICollection<CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES> CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES { get; set; }
         public virtual USER USER { get; set; }
         public virtual USER USER1 { get; set; }
     }

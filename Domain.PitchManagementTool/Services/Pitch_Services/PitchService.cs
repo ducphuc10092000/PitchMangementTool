@@ -14,6 +14,11 @@ namespace Domain.PitchManagementTool.Services.Pitch_Services
 
         }
 
+        public List<PITCH> GetListPitchByType(string pitchType)
+        {
+            return DataProvider.Ins.DB.PITCHes.Where(x=>x.PITCH_TYPE.NAME_PITCH_TYPE == pitchType).ToList();
+        }
+
 
         public List<PITCH> GetListPitch()
         {

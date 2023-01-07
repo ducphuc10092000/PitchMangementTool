@@ -21,6 +21,8 @@ namespace Domain.PitchManagementTool
             this.BOOKINGs1 = new HashSet<BOOKING>();
             this.CUSTOMER_PAYMENT_RECEIPT = new HashSet<CUSTOMER_PAYMENT_RECEIPT>();
             this.CUSTOMER_PAYMENT_RECEIPT1 = new HashSet<CUSTOMER_PAYMENT_RECEIPT>();
+            this.EXPORT_COMMODITIES_RECEIPT = new HashSet<EXPORT_COMMODITIES_RECEIPT>();
+            this.EXPORT_COMMODITIES_RECEIPT1 = new HashSet<EXPORT_COMMODITIES_RECEIPT>();
             this.IMPORT_COMMODITIES_RECEIPT = new HashSet<IMPORT_COMMODITIES_RECEIPT>();
             this.IMPORT_COMMODITIES_RECEIPT1 = new HashSet<IMPORT_COMMODITIES_RECEIPT>();
             this.PITCHes = new HashSet<PITCH>();
@@ -45,6 +47,10 @@ namespace Domain.PitchManagementTool
         public virtual ICollection<CUSTOMER_PAYMENT_RECEIPT> CUSTOMER_PAYMENT_RECEIPT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUSTOMER_PAYMENT_RECEIPT> CUSTOMER_PAYMENT_RECEIPT1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EXPORT_COMMODITIES_RECEIPT> EXPORT_COMMODITIES_RECEIPT { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EXPORT_COMMODITIES_RECEIPT> EXPORT_COMMODITIES_RECEIPT1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IMPORT_COMMODITIES_RECEIPT> IMPORT_COMMODITIES_RECEIPT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

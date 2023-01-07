@@ -1,0 +1,290 @@
+﻿<Window x:Class="WPF.PitchManagementTool.Views.Pitch_Views.DetailsPitch_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.PitchManagementTool.Views.Pitch_Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:behav="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="DetailsPitch_Window"
+        DataContext="{StaticResource addNewPitch_WD_VM}"
+        Height="470"
+        Width="450"
+        x:Name="addNewPitch_WD"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border BorderBrush="DarkGreen"
+                Background="White"
+                BorderThickness="5"
+                CornerRadius="30">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Chi tiết sân bóng"
+                           FontSize="20"
+                           Margin="0,15,0,0"
+                           HorizontalAlignment="Center"></TextBlock>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,10,0,0"
+                            Height="50"
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="Tên sân bóng"
+                               Margin="5,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="15"
+                               FontWeight="SemiBold"
+                               FontFamily="Open Sans"></TextBlock>
+                    <Border BorderBrush="LightGreen"
+                            BorderThickness="1"
+                            CornerRadius="10"
+                            Width="270"
+                            Margin="10,0,0,0">
+                        <TextBox Height="50"
+                                 TextWrapping="Wrap"
+                                 Text="{Binding pitchName}"
+                                 VerticalAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Left"
+                                 FontSize="17"
+                                 MaxLength="30"
+                                 Margin="10,0,10,0" />
+                    </Border>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,10,0,0"
+                            Height="60"
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="Loại sân bóng"
+                               Margin="5,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="15"
+                               FontWeight="SemiBold"
+                               FontFamily="Open Sans"></TextBlock>
+                    <ComboBox x:Name="PitchTypeListComboBox"
+                              BorderBrush="LightGreen"
+                              BorderThickness="1"
+                              IsReadOnly="True"
+                              ItemsSource="{Binding PITCHTYPELISTCOMBOBOX}"
+                              Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                              materialDesign:HintAssist.Hint="Loại sân"
+                              FontSize="15"
+                              Width="270"
+                              IsEnabled="False"
+                              Margin="10,0,0,0"
+                              SelectedItem="{Binding selectedPitchType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}">
+                        <behav:Interaction.Triggers>
+                            <behav:EventTrigger EventName="SelectionChanged">
+                                <behav:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=DataContext.PitchTypeListChangedCommand}"
+                                                           CommandParameter="{Binding ElementName=PitchTypeListComboBox}" />
+                            </behav:EventTrigger>
+                        </behav:Interaction.Triggers>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,20,0,0"
+                            Height="50"
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="Sân liên kết số 1"
+                               Margin="5,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="15"
+                               FontWeight="SemiBold"
+                               FontFamily="Open Sans"></TextBlock>
+                    <Border BorderBrush="LightGreen"
+                            BorderThickness="1"
+                            CornerRadius="10"
+                            Width="250"
+                            Margin="10,0,0,0">
+                        <TextBox Height="50"
+                                 IsReadOnly="True"
+                                 TextWrapping="Wrap"
+                                 Text="{Binding pitchLink1.NAME_PITCH}"
+                                 VerticalAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Left"
+                                 FontSize="17"
+                                 MaxLength="30"
+                                 Margin="10,0,10,0"
+                                 x:Name="TextboxPitchLinkList1">
+                        </TextBox>
+                    </Border>
+
+                    <Button Height="50"
+                            Width="50"
+                            Margin="10,0,0,0"
+                            BorderThickness="0"
+                            Command="{Binding OpenListPitchLinkCommand_1}"
+                            IsEnabled="{Binding isEnableLinkPitch1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                            Background="Transparent">
+                        <materialDesign:PackIcon Kind="PencilPlus"
+                                                 Height="20"
+                                                 Width="20" />
+                    </Button>
+                    <!--<ComboBox BorderBrush="LightGreen"
+                              x:Name="PitchLinkListComboBox1"
+                              BorderThickness="1"
+                              ItemsSource="{Binding PITCHLINKLISTCOMBOBOX1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                              materialDesign:HintAssist.Hint="Chọn sân liên kết"
+                              FontSize="15"
+                              Width="270"
+                              Margin="10,0,0,0"
+                              SelectedItem="{Binding selectedLinkPitch1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              IsEnabled="{Binding isEnableLinkPitch1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <behav:Interaction.Triggers>
+                            <behav:EventTrigger EventName="SelectionChanged">
+                                <behav:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=DataContext.SelectionPitchLinkChangedCommand1}"
+                                                           CommandParameter="{Binding ElementName=PitchLinkListComboBox1}" />
+                            </behav:EventTrigger>
+                        </behav:Interaction.Triggers>
+                    </ComboBox>-->
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,20,0,0"
+                            Height="50"
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="Sân liên kết số 2"
+                               Margin="5,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="15"
+                               FontWeight="SemiBold"
+                               FontFamily="Open Sans"></TextBlock>
+                    <Border BorderBrush="LightGreen"
+                            BorderThickness="1"
+                            CornerRadius="10"
+                            Width="250"
+                            Margin="10,0,0,0">
+                        <TextBox Height="50"
+                                 IsReadOnly="True"
+                                 TextWrapping="Wrap"
+                                 Text="{Binding pitchLink2.NAME_PITCH}"
+                                 VerticalAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Left"
+                                 FontSize="17"
+                                 MaxLength="30"
+                                 Margin="10,0,10,0" />
+
+                    </Border>
+                    <Button Height="50"
+                            Width="50"
+                            Margin="10,0,0,0"
+                            BorderThickness="0"
+                            Background="Transparent"
+                            Command="{Binding OpenListPitchLinkCommand_2}"
+                            IsEnabled="{Binding isEnableLinkPitch2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <materialDesign:PackIcon Kind="PencilPlus"
+                                                 Height="20"
+                                                 Width="20" />
+                    </Button>
+                    <!--<ComboBox BorderBrush="LightGreen"
+                              BorderThickness="1"
+                              x:Name="PitchLinkListComboBox2"
+                              ItemsSource="{Binding PITCHLINKLISTCOMBOBOX2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                              materialDesign:HintAssist.Hint="Chọn sân liên kết"
+                              FontSize="15"
+                              Width="270"
+                              Margin="10,0,0,0"
+                              SelectedItem="{Binding selectedLinkPitch2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              IsEnabled="{Binding isEnableLinkPitch2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <behav:Interaction.Triggers>
+                            <behav:EventTrigger EventName="SelectionChanged">
+                                <behav:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=DataContext.SelectionPitchLinkChangedCommand2}"
+                                                           CommandParameter="{Binding ElementName=PitchLinkListComboBox2, UpdateSourceTrigger=PropertyChanged}" />
+                            </behav:EventTrigger>
+                        </behav:Interaction.Triggers>
+                    </ComboBox>-->
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,20,0,0"
+                            Height="50"
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="Sân liên kết số 3"
+                               Margin="5,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="15"
+                               FontWeight="SemiBold"
+                               FontFamily="Open Sans"></TextBlock>
+                    <Border BorderBrush="LightGreen"
+                            BorderThickness="1"
+                            CornerRadius="10"
+                            Width="250"
+                            Margin="10,0,0,0">
+                        <TextBox Height="50"
+                                 TextWrapping="Wrap"
+                                 IsReadOnly="True"
+                                 Text="{Binding pitchLink3.NAME_PITCH}"
+                                 VerticalAlignment="Center"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Left"
+                                 FontSize="17"
+                                 MaxLength="30"
+                                 Margin="10,0,10,0" />
+
+                    </Border>
+                    <Button Height="50"
+                            Width="50"
+                            Margin="10,0,0,0"
+                            BorderThickness="0"
+                            Background="Transparent"
+                            Command="{Binding OpenListPitchLinkCommand_3}"
+                            IsEnabled="{Binding isEnableLinkPitch3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <materialDesign:PackIcon Kind="PencilPlus"
+                                                 Height="20"
+                                                 Width="20" />
+                    </Button>
+                    <!--<ComboBox BorderBrush="LightGreen"
+                              BorderThickness="1"
+                              x:Name="PitchLinkListComboBox3"
+                              ItemsSource="{Binding PITCHLINKLISTCOMBOBOX3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                              materialDesign:HintAssist.Hint="Chọn sân liên kết"
+                              FontSize="15"
+                              Width="270"
+                              Margin="10,0,0,0"
+                              SelectedItem="{Binding selectedLinkPitch3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                              IsEnabled="{Binding isEnableLinkPitch3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <behav:Interaction.Triggers>
+                            <behav:EventTrigger EventName="SelectionChanged">
+                                <behav:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=DataContext.SelectionPitchLinkChangedCommand3}"
+                                                           CommandParameter="{Binding ElementName=PitchLinkListComboBox3, UpdateSourceTrigger=PropertyChanged}" />
+                            </behav:EventTrigger>
+                        </behav:Interaction.Triggers>
+                    </ComboBox>-->
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,10,0,0"
+                            Height="50"
+                            HorizontalAlignment="Center">
+                    <Button Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+                            Command="{Binding btnDefaultAttributeCommand}"
+                            FontSize="17"
+                            Content="Mặc định"
+                            Width="120"
+                            Height="40"
+                            Background="#FFDDE8D0" />
+                    <Button Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+                            Margin="20,0,0,0"
+                            Command="{Binding btnAddNewPitchCommand}"
+                            CommandParameter="{Binding ElementName=addNewPitch_WD}"
+                            FontSize="17"
+                            Content="Chỉnh sửa"
+                            Width="120"
+                            Height="40" />
+                    <Button Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+                            Margin="20,0,0,0"
+                            Command="{Binding btnQuitCommand}"
+                            CommandParameter="{Binding ElementName=addNewPitch_WD}"
+                            FontSize="17"
+                            Content="Thoát"
+                            Width="120"
+                            Height="40"
+                            Background="#FFEA6527" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

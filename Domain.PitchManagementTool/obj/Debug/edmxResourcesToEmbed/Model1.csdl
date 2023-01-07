@@ -7,18 +7,16 @@
     <EntitySet Name="CUSTOMERs" EntityType="PITCHMANAGEMENTDBModel.CUSTOMER" />
     <EntitySet Name="CUSTOMER_PAYMENT_RECEIPT" EntityType="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT" />
     <EntitySet Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" EntityType="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" />
-    <EntitySet Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" EntityType="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" />
+    <EntitySet Name="EXPORT_COMMODITIES_RECEIPT" EntityType="PITCHMANAGEMENTDBModel.EXPORT_COMMODITIES_RECEIPT" />
+    <EntitySet Name="EXPORT_COMMODITIES_RECEIPT_DETAIL" EntityType="PITCHMANAGEMENTDBModel.EXPORT_COMMODITIES_RECEIPT_DETAIL" />
     <EntitySet Name="IMPORT_COMMODITIES_RECEIPT" EntityType="PITCHMANAGEMENTDBModel.IMPORT_COMMODITIES_RECEIPT" />
     <EntitySet Name="IMPORT_COMMODITIES_RECEIPT_DETAIL" EntityType="PITCHMANAGEMENTDBModel.IMPORT_COMMODITIES_RECEIPT_DETAIL" />
     <EntitySet Name="LINK_PITCH_DETAILS" EntityType="PITCHMANAGEMENTDBModel.LINK_PITCH_DETAILS" />
     <EntitySet Name="PITCHes" EntityType="PITCHMANAGEMENTDBModel.PITCH" />
     <EntitySet Name="PITCH_TYPE" EntityType="PITCHMANAGEMENTDBModel.PITCH_TYPE" />
+    <EntitySet Name="sysdiagrams" EntityType="PITCHMANAGEMENTDBModel.sysdiagram" />
     <EntitySet Name="USER_ROLES" EntityType="PITCHMANAGEMENTDBModel.USER_ROLES" />
     <EntitySet Name="USERS" EntityType="PITCHMANAGEMENTDBModel.USER" />
-    <AssociationSet Name="fk_BOOKING_CUSTOMER" Association="PITCHMANAGEMENTDBModel.fk_BOOKING_CUSTOMER">
-      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
-      <End Role="BOOKING" EntitySet="BOOKINGs" />
-    </AssociationSet>
     <AssociationSet Name="fk_BOOKING_PITCH" Association="PITCHMANAGEMENTDBModel.fk_BOOKING_PITCH">
       <End Role="PITCH" EntitySet="PITCHes" />
       <End Role="BOOKING" EntitySet="BOOKINGs" />
@@ -31,13 +29,17 @@
       <End Role="USER" EntitySet="USERS" />
       <End Role="BOOKING" EntitySet="BOOKINGs" />
     </AssociationSet>
-    <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_BOOKING" Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_BOOKING">
+    <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_BOOKING" Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_BOOKING">
       <End Role="BOOKING" EntitySet="BOOKINGs" />
-      <End Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" EntitySet="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" />
+      <End Role="CUSTOMER_PAYMENT_RECEIPT" EntitySet="CUSTOMER_PAYMENT_RECEIPT" />
     </AssociationSet>
     <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_COMMODITIES" Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_COMMODITIES">
       <End Role="COMMODITy" EntitySet="COMMODITIES" />
       <End Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" EntitySet="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EXPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES" Association="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES">
+      <End Role="COMMODITy" EntitySet="COMMODITIES" />
+      <End Role="EXPORT_COMMODITIES_RECEIPT_DETAIL" EntitySet="EXPORT_COMMODITIES_RECEIPT_DETAIL" />
     </AssociationSet>
     <AssociationSet Name="fk_IMPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES" Association="PITCHMANAGEMENTDBModel.fk_IMPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES">
       <End Role="COMMODITy" EntitySet="COMMODITIES" />
@@ -47,13 +49,9 @@
       <End Role="COMMODITIES_PROVIDER" EntitySet="COMMODITIES_PROVIDER" />
       <End Role="IMPORT_COMMODITIES_RECEIPT" EntitySet="IMPORT_COMMODITIES_RECEIPT" />
     </AssociationSet>
-    <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_CUSTOMER" Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_CUSTOMER">
-      <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+    <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_CUSTOMER_PAYMENT_RECEIPT" Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_CUSTOMER_PAYMENT_RECEIPT">
       <End Role="CUSTOMER_PAYMENT_RECEIPT" EntitySet="CUSTOMER_PAYMENT_RECEIPT" />
-    </AssociationSet>
-    <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_CUSTOMER_PAYMENT_RECEIPT" Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_CUSTOMER_PAYMENT_RECEIPT">
-      <End Role="CUSTOMER_PAYMENT_RECEIPT" EntitySet="CUSTOMER_PAYMENT_RECEIPT" />
-      <End Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" EntitySet="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" />
+      <End Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" EntitySet="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" />
     </AssociationSet>
     <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_USER_CREATE" Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_USER_CREATE">
       <End Role="USER" EntitySet="USERS" />
@@ -62,6 +60,18 @@
     <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_USER_UPDATE" Association="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_USER_UPDATE">
       <End Role="USER" EntitySet="USERS" />
       <End Role="CUSTOMER_PAYMENT_RECEIPT" EntitySet="CUSTOMER_PAYMENT_RECEIPT" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EXPORT_COMMODITIES_RECEIPT_CREATE_USER" Association="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_CREATE_USER">
+      <End Role="USER" EntitySet="USERS" />
+      <End Role="EXPORT_COMMODITIES_RECEIPT" EntitySet="EXPORT_COMMODITIES_RECEIPT" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EXPORT_COMMODITIES_RECEIPT_DETAIL" Association="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_DETAIL">
+      <End Role="EXPORT_COMMODITIES_RECEIPT" EntitySet="EXPORT_COMMODITIES_RECEIPT" />
+      <End Role="EXPORT_COMMODITIES_RECEIPT_DETAIL" EntitySet="EXPORT_COMMODITIES_RECEIPT_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EXPORT_COMMODITIES_RECEIPT_UPDATE_USER" Association="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_UPDATE_USER">
+      <End Role="USER" EntitySet="USERS" />
+      <End Role="EXPORT_COMMODITIES_RECEIPT" EntitySet="EXPORT_COMMODITIES_RECEIPT" />
     </AssociationSet>
     <AssociationSet Name="fk_IMPORT_COMMODITIES_RECEIPT_DETAIL_IMPORT_COMMODITIES_RECEIPT" Association="PITCHMANAGEMENTDBModel.fk_IMPORT_COMMODITIES_RECEIPT_DETAIL_IMPORT_COMMODITIES_RECEIPT">
       <End Role="IMPORT_COMMODITIES_RECEIPT" EntitySet="IMPORT_COMMODITIES_RECEIPT" />
@@ -106,31 +116,36 @@
     </Key>
     <Property Name="ID_BOOKING" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ID_PITCH" Type="Int32" Nullable="false" />
-    <Property Name="CHECK_IN_TIME" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CHECK_OUT_TIME" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="ID_CUSTOMER" Type="Int32" Nullable="false" />
-    <Property Name="PHONE_NUMMBER_CUSTOMER" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="CREATE_BY_ID_USER" Type="Int32" Nullable="false" />
     <Property Name="CREATE_AT" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UPDATE_BY_ID_USER" Type="Int32" />
     <Property Name="UPDATE_AT" Type="DateTime" Precision="3" />
     <Property Name="IS_DELETED" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="CUSTOMER" Relationship="PITCHMANAGEMENTDBModel.fk_BOOKING_CUSTOMER" FromRole="BOOKING" ToRole="CUSTOMER" />
+    <Property Name="COST" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CHECK_IN_TIME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CHECK_OUT_TIME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CUSTOMER_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CUSTOMER_PHONE_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DATE_BOOKING" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IS_DONE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="PITCH" Relationship="PITCHMANAGEMENTDBModel.fk_BOOKING_PITCH" FromRole="BOOKING" ToRole="PITCH" />
     <NavigationProperty Name="USER" Relationship="PITCHMANAGEMENTDBModel.fk_BOOKING_USER_CREATE" FromRole="BOOKING" ToRole="USER" />
     <NavigationProperty Name="USER1" Relationship="PITCHMANAGEMENTDBModel.fk_BOOKING_USER_UPDATE" FromRole="BOOKING" ToRole="USER" />
-    <NavigationProperty Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_BOOKING" FromRole="BOOKING" ToRole="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" />
+    <NavigationProperty Name="CUSTOMER_PAYMENT_RECEIPT" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_BOOKING" FromRole="BOOKING" ToRole="CUSTOMER_PAYMENT_RECEIPT" />
   </EntityType>
   <EntityType Name="COMMODITy">
     <Key>
       <PropertyRef Name="ID_COMMODITIES" />
     </Key>
     <Property Name="ID_COMMODITIES" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NAME_COMMODITIES" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="QUANTITY_ON_HAND" Type="Int32" Nullable="false" />
     <Property Name="PURCHASE_PRICE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="SELL_PRICE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IS_DELETED" Type="Boolean" />
+    <Property Name="NAME_COMMODITIES" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UNIT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_COMMODITIES" FromRole="COMMODITy" ToRole="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" />
+    <NavigationProperty Name="EXPORT_COMMODITIES_RECEIPT_DETAIL" Relationship="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES" FromRole="COMMODITy" ToRole="EXPORT_COMMODITIES_RECEIPT_DETAIL" />
     <NavigationProperty Name="IMPORT_COMMODITIES_RECEIPT_DETAIL" Relationship="PITCHMANAGEMENTDBModel.fk_IMPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES" FromRole="COMMODITy" ToRole="IMPORT_COMMODITIES_RECEIPT_DETAIL" />
   </EntityType>
   <EntityType Name="COMMODITIES_PROVIDER">
@@ -147,27 +162,30 @@
       <PropertyRef Name="ID_CUSTOMER" />
     </Key>
     <Property Name="ID_CUSTOMER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NAME_CUSTOMER" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NAME_CUSTOMER" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="PHONE_NUMBER_CUSTOMER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="IS_DELETED" Type="Boolean" Nullable="false" />
     <Property Name="DEBT_COST" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="BOOKINGs" Relationship="PITCHMANAGEMENTDBModel.fk_BOOKING_CUSTOMER" FromRole="CUSTOMER" ToRole="BOOKING" />
-    <NavigationProperty Name="CUSTOMER_PAYMENT_RECEIPT" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_CUSTOMER" FromRole="CUSTOMER" ToRole="CUSTOMER_PAYMENT_RECEIPT" />
   </EntityType>
   <EntityType Name="CUSTOMER_PAYMENT_RECEIPT">
     <Key>
       <PropertyRef Name="ID_CUSTOMER_PAYMENT_RECEIPT" />
     </Key>
     <Property Name="ID_CUSTOMER_PAYMENT_RECEIPT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ID_CUSTOMER" Type="Int32" Nullable="false" />
     <Property Name="TOTAL_COST" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="CREATE_AT" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="CREATE_BY_ID_USER" Type="Int32" Nullable="false" />
     <Property Name="UPDATE_AT" Type="DateTime" Precision="3" />
     <Property Name="UPDATE_BY_ID_USER" Type="Int32" />
     <Property Name="IS_DELETED" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="CUSTOMER" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_CUSTOMER" FromRole="CUSTOMER_PAYMENT_RECEIPT" ToRole="CUSTOMER" />
-    <NavigationProperty Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_CUSTOMER_PAYMENT_RECEIPT" FromRole="CUSTOMER_PAYMENT_RECEIPT" ToRole="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" />
+    <Property Name="ID_BOOKING" Type="Int32" Nullable="false" />
+    <Property Name="COST_USED_PITCH" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="COST_COMMODITIES_SERVICE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IS_DONE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="COST_UNPAID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="COST_PAID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BOOKING" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_BOOKING" FromRole="CUSTOMER_PAYMENT_RECEIPT" ToRole="BOOKING" />
+    <NavigationProperty Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_CUSTOMER_PAYMENT_RECEIPT" FromRole="CUSTOMER_PAYMENT_RECEIPT" ToRole="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" />
     <NavigationProperty Name="USER" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_USER_CREATE" FromRole="CUSTOMER_PAYMENT_RECEIPT" ToRole="USER" />
     <NavigationProperty Name="USER1" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_USER_UPDATE" FromRole="CUSTOMER_PAYMENT_RECEIPT" ToRole="USER" />
   </EntityType>
@@ -182,18 +200,35 @@
     <Property Name="QUANTITY" Type="Int32" Nullable="false" />
     <Property Name="TOTAL_COST_ACCOMPANIED_SERVICE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="COMMODITy" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_COMMODITIES" FromRole="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" ToRole="COMMODITy" />
+    <NavigationProperty Name="CUSTOMER_PAYMENT_RECEIPT" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_CUSTOMER_PAYMENT_RECEIPT" FromRole="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" ToRole="CUSTOMER_PAYMENT_RECEIPT" />
   </EntityType>
-  <EntityType Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH">
+  <EntityType Name="EXPORT_COMMODITIES_RECEIPT">
     <Key>
-      <PropertyRef Name="ID_RECEIPT_DETAIL_USED_PITCH" />
-      <PropertyRef Name="ID_CUSTOMER_PAYMENT_RECEIPT" />
+      <PropertyRef Name="ID_EXPORT_COMMODITIES_RECEIPT" />
     </Key>
-    <Property Name="ID_RECEIPT_DETAIL_USED_PITCH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ID_CUSTOMER_PAYMENT_RECEIPT" Type="Int32" Nullable="false" />
-    <Property Name="ID_BOOKING" Type="Int32" Nullable="false" />
-    <Property Name="TOTAL_COST_USED_PITCH" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="BOOKING" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_BOOKING" FromRole="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" ToRole="BOOKING" />
-    <NavigationProperty Name="CUSTOMER_PAYMENT_RECEIPT" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_CUSTOMER_PAYMENT_RECEIPT" FromRole="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" ToRole="CUSTOMER_PAYMENT_RECEIPT" />
+    <Property Name="ID_EXPORT_COMMODITIES_RECEIPT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TOTAL_COST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CREATE_AT" Type="DateTime" Precision="3" />
+    <Property Name="UPDATE_AT" Type="DateTime" Precision="3" />
+    <Property Name="CREATE_BY_ID_USER" Type="Int32" />
+    <Property Name="UPDATE_BY_ID_USER" Type="Int32" />
+    <Property Name="IS_DELETED" Type="Boolean" />
+    <NavigationProperty Name="USER" Relationship="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_CREATE_USER" FromRole="EXPORT_COMMODITIES_RECEIPT" ToRole="USER" />
+    <NavigationProperty Name="EXPORT_COMMODITIES_RECEIPT_DETAIL" Relationship="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_DETAIL" FromRole="EXPORT_COMMODITIES_RECEIPT" ToRole="EXPORT_COMMODITIES_RECEIPT_DETAIL" />
+    <NavigationProperty Name="USER1" Relationship="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_UPDATE_USER" FromRole="EXPORT_COMMODITIES_RECEIPT" ToRole="USER" />
+  </EntityType>
+  <EntityType Name="EXPORT_COMMODITIES_RECEIPT_DETAIL">
+    <Key>
+      <PropertyRef Name="ID_EXPORT_COMMODITIES_RECEIPT" />
+      <PropertyRef Name="ID_EXPORT_COMMODITIES_RECEIPT_DETAIL" />
+    </Key>
+    <Property Name="ID_EXPORT_COMMODITIES_RECEIPT" Type="Int32" Nullable="false" />
+    <Property Name="ID_EXPORT_COMMODITIES_RECEIPT_DETAIL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_COMMODITIES" Type="Int32" />
+    <Property Name="QUANTITY_EXPORT" Type="Int32" />
+    <Property Name="TOTAL_COST" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="COMMODITy" Relationship="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES" FromRole="EXPORT_COMMODITIES_RECEIPT_DETAIL" ToRole="COMMODITy" />
+    <NavigationProperty Name="EXPORT_COMMODITIES_RECEIPT" Relationship="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_DETAIL" FromRole="EXPORT_COMMODITIES_RECEIPT_DETAIL" ToRole="EXPORT_COMMODITIES_RECEIPT" />
   </EntityType>
   <EntityType Name="IMPORT_COMMODITIES_RECEIPT">
     <Key>
@@ -248,13 +283,13 @@
     <Property Name="UPDATE_AT" Type="DateTime" Precision="3" />
     <Property Name="IS_DELETED" Type="Boolean" Nullable="false" />
     <Property Name="IS_USING" Type="Boolean" Nullable="false" />
+    <Property Name="IS_CHILDREN" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="BOOKINGs" Relationship="PITCHMANAGEMENTDBModel.fk_BOOKING_PITCH" FromRole="PITCH" ToRole="BOOKING" />
     <NavigationProperty Name="LINK_PITCH_DETAILS" Relationship="PITCHMANAGEMENTDBModel.fk_LINK_PITCH_DETAILS_CHILDREN" FromRole="PITCH" ToRole="LINK_PITCH_DETAILS" />
     <NavigationProperty Name="LINK_PITCH_DETAILS1" Relationship="PITCHMANAGEMENTDBModel.fk_LINK_PITCH_DETAILS_PARENT" FromRole="PITCH" ToRole="LINK_PITCH_DETAILS" />
     <NavigationProperty Name="PITCH_TYPE" Relationship="PITCHMANAGEMENTDBModel.fk_PITCH_PITCH_TYPE" FromRole="PITCH" ToRole="PITCH_TYPE" />
     <NavigationProperty Name="USER" Relationship="PITCHMANAGEMENTDBModel.fk_PITCH_USER_CREATE" FromRole="PITCH" ToRole="USER" />
     <NavigationProperty Name="USER1" Relationship="PITCHMANAGEMENTDBModel.fk_PITCH_USER_UPDATE" FromRole="PITCH" ToRole="USER" />
-    <Property Name="IS_CHILDREN" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="PITCH_TYPE">
     <Key>
@@ -267,6 +302,16 @@
     <Property Name="PRICE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="IS_DELETED" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="PITCHes" Relationship="PITCHMANAGEMENTDBModel.fk_PITCH_PITCH_TYPE" FromRole="PITCH_TYPE" ToRole="PITCH" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="USER_ROLES">
     <Key>
@@ -294,24 +339,14 @@
     <NavigationProperty Name="BOOKINGs1" Relationship="PITCHMANAGEMENTDBModel.fk_BOOKING_USER_UPDATE" FromRole="USER" ToRole="BOOKING" />
     <NavigationProperty Name="CUSTOMER_PAYMENT_RECEIPT" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_USER_CREATE" FromRole="USER" ToRole="CUSTOMER_PAYMENT_RECEIPT" />
     <NavigationProperty Name="CUSTOMER_PAYMENT_RECEIPT1" Relationship="PITCHMANAGEMENTDBModel.fk_CUSTOMER_PAYMENT_RECEIPT_USER_UPDATE" FromRole="USER" ToRole="CUSTOMER_PAYMENT_RECEIPT" />
+    <NavigationProperty Name="EXPORT_COMMODITIES_RECEIPT" Relationship="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_CREATE_USER" FromRole="USER" ToRole="EXPORT_COMMODITIES_RECEIPT" />
+    <NavigationProperty Name="EXPORT_COMMODITIES_RECEIPT1" Relationship="PITCHMANAGEMENTDBModel.fk_EXPORT_COMMODITIES_RECEIPT_UPDATE_USER" FromRole="USER" ToRole="EXPORT_COMMODITIES_RECEIPT" />
     <NavigationProperty Name="IMPORT_COMMODITIES_RECEIPT" Relationship="PITCHMANAGEMENTDBModel.fk_IMPORT_COMMODITIES_RECEIPT_USER_CREATE" FromRole="USER" ToRole="IMPORT_COMMODITIES_RECEIPT" />
     <NavigationProperty Name="IMPORT_COMMODITIES_RECEIPT1" Relationship="PITCHMANAGEMENTDBModel.fk_IMPORT_COMMODITIES_RECEIPT_USER_UPDATE" FromRole="USER" ToRole="IMPORT_COMMODITIES_RECEIPT" />
     <NavigationProperty Name="PITCHes" Relationship="PITCHMANAGEMENTDBModel.fk_PITCH_USER_CREATE" FromRole="USER" ToRole="PITCH" />
     <NavigationProperty Name="PITCHes1" Relationship="PITCHMANAGEMENTDBModel.fk_PITCH_USER_UPDATE" FromRole="USER" ToRole="PITCH" />
     <NavigationProperty Name="USER_ROLES" Relationship="PITCHMANAGEMENTDBModel.fk_USERS_USER_ROLES" FromRole="USER" ToRole="USER_ROLES" />
   </EntityType>
-  <Association Name="fk_BOOKING_CUSTOMER">
-    <End Type="PITCHMANAGEMENTDBModel.CUSTOMER" Role="CUSTOMER" Multiplicity="1" />
-    <End Type="PITCHMANAGEMENTDBModel.BOOKING" Role="BOOKING" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CUSTOMER">
-        <PropertyRef Name="ID_CUSTOMER" />
-      </Principal>
-      <Dependent Role="BOOKING">
-        <PropertyRef Name="ID_CUSTOMER" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_BOOKING_PITCH">
     <End Type="PITCHMANAGEMENTDBModel.PITCH" Role="PITCH" Multiplicity="1" />
     <End Type="PITCHMANAGEMENTDBModel.BOOKING" Role="BOOKING" Multiplicity="*" />
@@ -348,14 +383,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_BOOKING">
+  <Association Name="fk_CUSTOMER_PAYMENT_RECEIPT_BOOKING">
     <End Type="PITCHMANAGEMENTDBModel.BOOKING" Role="BOOKING" Multiplicity="1" />
-    <End Type="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" Multiplicity="*" />
+    <End Type="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT" Role="CUSTOMER_PAYMENT_RECEIPT" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="BOOKING">
         <PropertyRef Name="ID_BOOKING" />
       </Principal>
-      <Dependent Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH">
+      <Dependent Role="CUSTOMER_PAYMENT_RECEIPT">
         <PropertyRef Name="ID_BOOKING" />
       </Dependent>
     </ReferentialConstraint>
@@ -368,6 +403,18 @@
         <PropertyRef Name="ID_COMMODITIES" />
       </Principal>
       <Dependent Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES">
+        <PropertyRef Name="ID_COMMODITIES" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EXPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES">
+    <End Type="PITCHMANAGEMENTDBModel.COMMODITy" Role="COMMODITy" Multiplicity="0..1" />
+    <End Type="PITCHMANAGEMENTDBModel.EXPORT_COMMODITIES_RECEIPT_DETAIL" Role="EXPORT_COMMODITIES_RECEIPT_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMMODITy">
+        <PropertyRef Name="ID_COMMODITIES" />
+      </Principal>
+      <Dependent Role="EXPORT_COMMODITIES_RECEIPT_DETAIL">
         <PropertyRef Name="ID_COMMODITIES" />
       </Dependent>
     </ReferentialConstraint>
@@ -396,26 +443,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_CUSTOMER_PAYMENT_RECEIPT_CUSTOMER">
-    <End Type="PITCHMANAGEMENTDBModel.CUSTOMER" Role="CUSTOMER" Multiplicity="1" />
-    <End Type="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT" Role="CUSTOMER_PAYMENT_RECEIPT" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CUSTOMER">
-        <PropertyRef Name="ID_CUSTOMER" />
-      </Principal>
-      <Dependent Role="CUSTOMER_PAYMENT_RECEIPT">
-        <PropertyRef Name="ID_CUSTOMER" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_CUSTOMER_PAYMENT_RECEIPT">
+  <Association Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_CUSTOMER_PAYMENT_RECEIPT">
     <End Type="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT" Role="CUSTOMER_PAYMENT_RECEIPT" Multiplicity="1" />
-    <End Type="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" Multiplicity="*" />
+    <End Type="PITCHMANAGEMENTDBModel.CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CUSTOMER_PAYMENT_RECEIPT">
         <PropertyRef Name="ID_CUSTOMER_PAYMENT_RECEIPT" />
       </Principal>
-      <Dependent Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH">
+      <Dependent Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES">
         <PropertyRef Name="ID_CUSTOMER_PAYMENT_RECEIPT" />
       </Dependent>
     </ReferentialConstraint>
@@ -440,6 +475,42 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="CUSTOMER_PAYMENT_RECEIPT">
+        <PropertyRef Name="UPDATE_BY_ID_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EXPORT_COMMODITIES_RECEIPT_CREATE_USER">
+    <End Type="PITCHMANAGEMENTDBModel.USER" Role="USER" Multiplicity="0..1" />
+    <End Type="PITCHMANAGEMENTDBModel.EXPORT_COMMODITIES_RECEIPT" Role="EXPORT_COMMODITIES_RECEIPT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EXPORT_COMMODITIES_RECEIPT">
+        <PropertyRef Name="CREATE_BY_ID_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EXPORT_COMMODITIES_RECEIPT_DETAIL">
+    <End Type="PITCHMANAGEMENTDBModel.EXPORT_COMMODITIES_RECEIPT" Role="EXPORT_COMMODITIES_RECEIPT" Multiplicity="1" />
+    <End Type="PITCHMANAGEMENTDBModel.EXPORT_COMMODITIES_RECEIPT_DETAIL" Role="EXPORT_COMMODITIES_RECEIPT_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXPORT_COMMODITIES_RECEIPT">
+        <PropertyRef Name="ID_EXPORT_COMMODITIES_RECEIPT" />
+      </Principal>
+      <Dependent Role="EXPORT_COMMODITIES_RECEIPT_DETAIL">
+        <PropertyRef Name="ID_EXPORT_COMMODITIES_RECEIPT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EXPORT_COMMODITIES_RECEIPT_UPDATE_USER">
+    <End Type="PITCHMANAGEMENTDBModel.USER" Role="USER" Multiplicity="0..1" />
+    <End Type="PITCHMANAGEMENTDBModel.EXPORT_COMMODITIES_RECEIPT" Role="EXPORT_COMMODITIES_RECEIPT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EXPORT_COMMODITIES_RECEIPT">
         <PropertyRef Name="UPDATE_BY_ID_USER" />
       </Dependent>
     </ReferentialConstraint>

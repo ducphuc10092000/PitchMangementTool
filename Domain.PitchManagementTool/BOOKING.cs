@@ -17,26 +17,28 @@ namespace Domain.PitchManagementTool
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BOOKING()
         {
-            this.CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH = new HashSet<CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH>();
+            this.CUSTOMER_PAYMENT_RECEIPT = new HashSet<CUSTOMER_PAYMENT_RECEIPT>();
         }
     
         public int ID_BOOKING { get; set; }
         public int ID_PITCH { get; set; }
-        public System.DateTime CHECK_IN_TIME { get; set; }
-        public System.DateTime CHECK_OUT_TIME { get; set; }
-        public int ID_CUSTOMER { get; set; }
-        public string PHONE_NUMMBER_CUSTOMER { get; set; }
         public int CREATE_BY_ID_USER { get; set; }
         public System.DateTime CREATE_AT { get; set; }
         public Nullable<int> UPDATE_BY_ID_USER { get; set; }
         public Nullable<System.DateTime> UPDATE_AT { get; set; }
         public bool IS_DELETED { get; set; }
+        public string COST { get; set; }
+        public string CHECK_IN_TIME { get; set; }
+        public string CHECK_OUT_TIME { get; set; }
+        public string CUSTOMER_NAME { get; set; }
+        public string CUSTOMER_PHONE_NUMBER { get; set; }
+        public string DATE_BOOKING { get; set; }
+        public string IS_DONE { get; set; }
     
-        public virtual CUSTOMER CUSTOMER { get; set; }
         public virtual PITCH PITCH { get; set; }
         public virtual USER USER { get; set; }
         public virtual USER USER1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH> CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH { get; set; }
+        public virtual ICollection<CUSTOMER_PAYMENT_RECEIPT> CUSTOMER_PAYMENT_RECEIPT { get; set; }
     }
 }

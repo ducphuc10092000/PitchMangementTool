@@ -1,0 +1,243 @@
+﻿<UserControl x:Class="WPF.PitchManagementTool.Views.Debt_Views.DebtManage_Usercontrol"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPF.PitchManagementTool.Views.Debt_Views"
+             mc:Ignorable="d"
+             Background="White"
+             Language="vi-VN"
+             DataContext="{StaticResource debtManage_UC_VM}"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:behav="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:liveChart="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             d:DesignHeight="850"
+             d:DesignWidth="1600">
+    <Border BorderBrush="LightGreen"
+            BorderThickness="3"
+            Margin="5">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0"
+                    BorderBrush="LightGreen"
+                    BorderThickness="3"
+                    Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Text="Biểu đồ doanh thu"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="40"></TextBlock>
+                    <liveChart:PieChart Grid.Row="1"
+                                        Height="500"
+                                        Margin="0,0,0,0"
+                                        Width="500"
+                                        LegendLocation="Bottom"
+                                        Hoverable="True"
+                                        FontSize="20"
+                                        InnerRadius="10"
+                                        Series="{Binding PaymentCollection, UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}">
+                        <liveChart:PieChart.ChartLegend>
+                            <liveChart:DefaultLegend TextBlock.FontSize="20"
+                                                     Margin="0,20,0,0"></liveChart:DefaultLegend>
+                        </liveChart:PieChart.ChartLegend>
+                    </liveChart:PieChart>
+                    <StackPanel Grid.Row="2"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <TextBox Height="60"
+                                 Width="200"
+                                 TextWrapping="Wrap"
+                                 FontWeight="Bold"
+                                 materialDesign:HintAssist.Hint="Tổng doanh thu"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                 Text="{Binding costTotalTextbox}"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Center"
+                                 IsReadOnly="True"
+                                 FontSize="17"/>
+                        <TextBox Height="60"
+                                 Width="200"
+                                 Foreground="Blue"
+                                 TextWrapping="Wrap"
+                                 FontWeight="Bold"
+                                 materialDesign:HintAssist.Hint="Doanh thu thuê sân"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                 Text="{Binding costFromUsedPitchTextbox}"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Center"
+                                 IsReadOnly="True"
+                                 FontSize="17"
+                                 Margin="20,0,0,0"/>
+                        <TextBox Height="60"
+                                 Width="200"
+                                 TextWrapping="Wrap"
+                                 Foreground="Red"
+                                 FontWeight="Bold"
+                                 materialDesign:HintAssist.Hint="Doanh thu dịch vụ"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                 Text="{Binding costFromCommoditiesTextbox}"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Center"
+                                 IsReadOnly="True"
+                                 Margin="20,0,0,0"
+                                 FontSize="17" />
+                    </StackPanel>
+
+                    <Border Grid.Row="3"
+                            BorderBrush="LightGreen"
+                            BorderThickness="3"
+                            Margin="3">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <DatePicker materialDesign:HintAssist.Hint="Từ ngày"
+                                        Text="{Binding fromDate, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                                        Width="100"
+                                        SelectedDateFormat="Short"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                        FontSize="15"
+                                        Margin="0,0,0,0" />
+                            <DatePicker materialDesign:HintAssist.Hint="Đến ngày"
+                                        Text="{Binding toDate, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                                        Width="100"
+                                        SelectedDateFormat="Short"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                        FontSize="15"
+                                        Margin="40,0,0,0" />
+                            <Button Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+                                    Margin="40,0,0,0"
+                                    Foreground="White"
+                                    Command="{Binding btnFilterChartPaymentCommand}"
+                                    FontSize="15"
+                                    Content="Lọc"
+                                    Width="150"
+                                    Height="50" />
+                            <!--<Button Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+                                    Margin="40,0,0,0"
+                                    Foreground="White"
+                                    Command="{Binding btnFilterDChartPaymentCommand}"
+                                    FontSize="15"
+                                    Content="Mặc định"
+                                    Width="150"
+                                    Height="50" />-->
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1"
+                    BorderBrush="LightGreen"
+                    BorderThickness="3"
+                    Margin="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               Text="Biểu đồ lợi nhuận"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="40"></TextBlock>
+                    <liveChart:CartesianChart Grid.Row="1"
+                                        Height="500"
+                                        Margin="0,0,0,0"
+                                        Width="500"
+                                        LegendLocation="Bottom"
+                                        Hoverable="True"
+                                        FontSize="20"
+                                              Series="{Binding CartesianChartCollection, UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}">
+                        <liveChart:CartesianChart.ChartLegend>
+                            <liveChart:DefaultLegend TextBlock.FontSize="20"
+                                                     Margin="0,20,0,0"></liveChart:DefaultLegend>
+                        </liveChart:CartesianChart.ChartLegend>
+                    </liveChart:CartesianChart>
+                    <StackPanel Grid.Row="2"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                        <TextBox Height="60"
+                                 Width="200"
+                                 TextWrapping="Wrap"
+                                 FontWeight="Bold"
+                                 Foreground="Blue"
+                                 materialDesign:HintAssist.Hint="Tổng doanh thu"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                 Text="{Binding aaa}"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Center"
+                                 IsReadOnly="True"
+                                 FontSize="17" />
+                        <TextBox Height="60"
+                                 Width="200"
+                                 Foreground="Red"
+                                 TextWrapping="Wrap"
+                                 FontWeight="Bold"
+                                 materialDesign:HintAssist.Hint="Lợi nhuận"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                 Text="{Binding aaa}"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Center"
+                                 IsReadOnly="True"
+                                 FontSize="17"
+                                 Margin="20,0,0,0" />
+                        <TextBox Height="60"
+                                 Width="200"
+                                 TextWrapping="Wrap"
+                                 Foreground="Orange"
+                                 FontWeight="Bold"
+                                 materialDesign:HintAssist.Hint="Tổng chi phí"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                 Text="{Binding aaa}"
+                                 VerticalContentAlignment="Center"
+                                 HorizontalContentAlignment="Center"
+                                 IsReadOnly="True"
+                                 Margin="20,0,0,0"
+                                 FontSize="17" />
+                    </StackPanel>
+                    <Border Grid.Row="3"
+                            BorderBrush="LightGreen"
+                            BorderThickness="3"
+                            Margin="3">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <DatePicker materialDesign:HintAssist.Hint="Từ ngày"
+                                        Text="{Binding importDate, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                                        Width="100"
+                                        SelectedDateFormat="Short"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                        FontSize="15"
+                                        Margin="0,0,0,0" />
+                            <DatePicker materialDesign:HintAssist.Hint="Đến ngày"
+                                        Text="{Binding importDate, Mode=TwoWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                                        Width="100"
+                                        SelectedDateFormat="Short"
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                        FontSize="15"
+                                        Margin="40,0,0,0" />
+                            <Button Style="{StaticResource MaterialDesignFlatSecondaryDarkBgButton}"
+                                    Margin="40,0,0,0"
+                                    Foreground="White"
+                                    Command="{Binding btnFilterImportCommoditiesCommand}"
+                                    FontSize="15"
+                                    Content="Lọc"
+                                    Width="150"
+                                    Height="50" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

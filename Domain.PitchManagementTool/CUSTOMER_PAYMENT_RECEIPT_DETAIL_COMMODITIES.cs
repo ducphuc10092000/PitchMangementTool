@@ -21,5 +21,6 @@ namespace Domain.PitchManagementTool
         public string TOTAL_COST_ACCOMPANIED_SERVICE { get; set; }
     
         public virtual COMMODITy COMMODITy { get; set; }
+        public virtual CUSTOMER_PAYMENT_RECEIPT CUSTOMER_PAYMENT_RECEIPT { get; set; }
     }
 }

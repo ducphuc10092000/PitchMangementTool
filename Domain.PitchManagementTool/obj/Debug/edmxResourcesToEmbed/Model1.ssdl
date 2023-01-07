@@ -6,25 +6,30 @@
     </Key>
     <Property Name="ID_BOOKING" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_PITCH" Type="int" Nullable="false" />
-    <Property Name="CHECK_IN_TIME" Type="datetime" Nullable="false" />
-    <Property Name="CHECK_OUT_TIME" Type="datetime" Nullable="false" />
-    <Property Name="ID_CUSTOMER" Type="int" Nullable="false" />
-    <Property Name="PHONE_NUMMBER_CUSTOMER" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="CREATE_BY_ID_USER" Type="int" Nullable="false" />
     <Property Name="CREATE_AT" Type="datetime" Nullable="false" />
     <Property Name="UPDATE_BY_ID_USER" Type="int" />
     <Property Name="UPDATE_AT" Type="datetime" />
     <Property Name="IS_DELETED" Type="bit" Nullable="false" />
+    <Property Name="COST" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="CHECK_IN_TIME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CHECK_OUT_TIME" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CUSTOMER_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="CUSTOMER_PHONE_NUMBER" Type="varchar" MaxLength="20" />
+    <Property Name="DATE_BOOKING" Type="varchar" MaxLength="50" />
+    <Property Name="IS_DONE" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="COMMODITIES">
     <Key>
       <PropertyRef Name="ID_COMMODITIES" />
     </Key>
     <Property Name="ID_COMMODITIES" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NAME_COMMODITIES" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="QUANTITY_ON_HAND" Type="int" Nullable="false" />
     <Property Name="PURCHASE_PRICE" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="SELL_PRICE" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="IS_DELETED" Type="bit" />
+    <Property Name="NAME_COMMODITIES" Type="nvarchar" MaxLength="50" />
+    <Property Name="UNIT" Type="nvarchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="COMMODITIES_PROVIDER">
     <Key>
@@ -39,7 +44,7 @@
       <PropertyRef Name="ID_CUSTOMER" />
     </Key>
     <Property Name="ID_CUSTOMER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NAME_CUSTOMER" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NAME_CUSTOMER" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="PHONE_NUMBER_CUSTOMER" Type="varchar" MaxLength="20" />
     <Property Name="IS_DELETED" Type="bit" Nullable="false" />
     <Property Name="DEBT_COST" Type="int" Nullable="false" />
@@ -49,13 +54,18 @@
       <PropertyRef Name="ID_CUSTOMER_PAYMENT_RECEIPT" />
     </Key>
     <Property Name="ID_CUSTOMER_PAYMENT_RECEIPT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ID_CUSTOMER" Type="int" Nullable="false" />
     <Property Name="TOTAL_COST" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="CREATE_AT" Type="datetime" Nullable="false" />
     <Property Name="CREATE_BY_ID_USER" Type="int" Nullable="false" />
     <Property Name="UPDATE_AT" Type="datetime" />
     <Property Name="UPDATE_BY_ID_USER" Type="int" />
     <Property Name="IS_DELETED" Type="bit" Nullable="false" />
+    <Property Name="ID_BOOKING" Type="int" Nullable="false" />
+    <Property Name="COST_USED_PITCH" Type="varchar" MaxLength="20" />
+    <Property Name="COST_COMMODITIES_SERVICE" Type="varchar" MaxLength="20" />
+    <Property Name="IS_DONE" Type="nvarchar" MaxLength="20" />
+    <Property Name="COST_UNPAID" Type="varchar" MaxLength="20" />
+    <Property Name="COST_PAID" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES">
     <Key>
@@ -68,15 +78,28 @@
     <Property Name="QUANTITY" Type="int" Nullable="false" />
     <Property Name="TOTAL_COST_ACCOMPANIED_SERVICE" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
-  <EntityType Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH">
+  <EntityType Name="EXPORT_COMMODITIES_RECEIPT">
     <Key>
-      <PropertyRef Name="ID_RECEIPT_DETAIL_USED_PITCH" />
-      <PropertyRef Name="ID_CUSTOMER_PAYMENT_RECEIPT" />
+      <PropertyRef Name="ID_EXPORT_COMMODITIES_RECEIPT" />
     </Key>
-    <Property Name="ID_RECEIPT_DETAIL_USED_PITCH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ID_CUSTOMER_PAYMENT_RECEIPT" Type="int" Nullable="false" />
-    <Property Name="ID_BOOKING" Type="int" Nullable="false" />
-    <Property Name="TOTAL_COST_USED_PITCH" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ID_EXPORT_COMMODITIES_RECEIPT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TOTAL_COST" Type="varchar" MaxLength="20" />
+    <Property Name="CREATE_AT" Type="datetime" />
+    <Property Name="UPDATE_AT" Type="datetime" />
+    <Property Name="CREATE_BY_ID_USER" Type="int" />
+    <Property Name="UPDATE_BY_ID_USER" Type="int" />
+    <Property Name="IS_DELETED" Type="bit" />
+  </EntityType>
+  <EntityType Name="EXPORT_COMMODITIES_RECEIPT_DETAIL">
+    <Key>
+      <PropertyRef Name="ID_EXPORT_COMMODITIES_RECEIPT" />
+      <PropertyRef Name="ID_EXPORT_COMMODITIES_RECEIPT_DETAIL" />
+    </Key>
+    <Property Name="ID_EXPORT_COMMODITIES_RECEIPT" Type="int" Nullable="false" />
+    <Property Name="ID_EXPORT_COMMODITIES_RECEIPT_DETAIL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_COMMODITIES" Type="int" />
+    <Property Name="QUANTITY_EXPORT" Type="int" />
+    <Property Name="TOTAL_COST" Type="varchar" MaxLength="20" />
   </EntityType>
   <EntityType Name="IMPORT_COMMODITIES_RECEIPT">
     <Key>
@@ -136,6 +159,16 @@
     <Property Name="PRICE" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="IS_DELETED" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="USER_ROLES">
     <Key>
       <PropertyRef Name="ID" />
@@ -158,18 +191,6 @@
     <Property Name="UPDATE_BY_ID_USER" Type="int" />
     <Property Name="DATE_OF_BIRTH" Type="date" />
   </EntityType>
-  <Association Name="fk_BOOKING_CUSTOMER">
-    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
-    <End Role="BOOKING" Type="Self.BOOKING" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CUSTOMER">
-        <PropertyRef Name="ID_CUSTOMER" />
-      </Principal>
-      <Dependent Role="BOOKING">
-        <PropertyRef Name="ID_CUSTOMER" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="fk_BOOKING_PITCH">
     <End Role="PITCH" Type="Self.PITCH" Multiplicity="1" />
     <End Role="BOOKING" Type="Self.BOOKING" Multiplicity="*" />
@@ -206,15 +227,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_CUSTOMER_PAYMENT_RECEIPT_CUSTOMER">
-    <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+  <Association Name="fk_CUSTOMER_PAYMENT_RECEIPT_BOOKING">
+    <End Role="BOOKING" Type="Self.BOOKING" Multiplicity="1" />
     <End Role="CUSTOMER_PAYMENT_RECEIPT" Type="Self.CUSTOMER_PAYMENT_RECEIPT" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="CUSTOMER">
-        <PropertyRef Name="ID_CUSTOMER" />
+      <Principal Role="BOOKING">
+        <PropertyRef Name="ID_BOOKING" />
       </Principal>
       <Dependent Role="CUSTOMER_PAYMENT_RECEIPT">
-        <PropertyRef Name="ID_CUSTOMER" />
+        <PropertyRef Name="ID_BOOKING" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -230,26 +251,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_BOOKING">
-    <End Role="BOOKING" Type="Self.BOOKING" Multiplicity="1" />
-    <End Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" Type="Self.CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="BOOKING">
-        <PropertyRef Name="ID_BOOKING" />
-      </Principal>
-      <Dependent Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH">
-        <PropertyRef Name="ID_BOOKING" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_CUSTOMER_PAYMENT_RECEIPT">
+  <Association Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_CUSTOMER_PAYMENT_RECEIPT">
     <End Role="CUSTOMER_PAYMENT_RECEIPT" Type="Self.CUSTOMER_PAYMENT_RECEIPT" Multiplicity="1" />
-    <End Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" Type="Self.CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" Multiplicity="*" />
+    <End Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" Type="Self.CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CUSTOMER_PAYMENT_RECEIPT">
         <PropertyRef Name="ID_CUSTOMER_PAYMENT_RECEIPT" />
       </Principal>
-      <Dependent Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH">
+      <Dependent Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES">
         <PropertyRef Name="ID_CUSTOMER_PAYMENT_RECEIPT" />
       </Dependent>
     </ReferentialConstraint>
@@ -274,6 +283,54 @@
         <PropertyRef Name="ID" />
       </Principal>
       <Dependent Role="CUSTOMER_PAYMENT_RECEIPT">
+        <PropertyRef Name="UPDATE_BY_ID_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EXPORT_COMMODITIES_RECEIPT_CREATE_USER">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+    <End Role="EXPORT_COMMODITIES_RECEIPT" Type="Self.EXPORT_COMMODITIES_RECEIPT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EXPORT_COMMODITIES_RECEIPT">
+        <PropertyRef Name="CREATE_BY_ID_USER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EXPORT_COMMODITIES_RECEIPT_DETAIL">
+    <End Role="EXPORT_COMMODITIES_RECEIPT" Type="Self.EXPORT_COMMODITIES_RECEIPT" Multiplicity="1" />
+    <End Role="EXPORT_COMMODITIES_RECEIPT_DETAIL" Type="Self.EXPORT_COMMODITIES_RECEIPT_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXPORT_COMMODITIES_RECEIPT">
+        <PropertyRef Name="ID_EXPORT_COMMODITIES_RECEIPT" />
+      </Principal>
+      <Dependent Role="EXPORT_COMMODITIES_RECEIPT_DETAIL">
+        <PropertyRef Name="ID_EXPORT_COMMODITIES_RECEIPT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EXPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES">
+    <End Role="COMMODITIES" Type="Self.COMMODITIES" Multiplicity="0..1" />
+    <End Role="EXPORT_COMMODITIES_RECEIPT_DETAIL" Type="Self.EXPORT_COMMODITIES_RECEIPT_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMMODITIES">
+        <PropertyRef Name="ID_COMMODITIES" />
+      </Principal>
+      <Dependent Role="EXPORT_COMMODITIES_RECEIPT_DETAIL">
+        <PropertyRef Name="ID_COMMODITIES" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_EXPORT_COMMODITIES_RECEIPT_UPDATE_USER">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+    <End Role="EXPORT_COMMODITIES_RECEIPT" Type="Self.EXPORT_COMMODITIES_RECEIPT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EXPORT_COMMODITIES_RECEIPT">
         <PropertyRef Name="UPDATE_BY_ID_USER" />
       </Dependent>
     </ReferentialConstraint>
@@ -417,18 +474,16 @@
     <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CUSTOMER_PAYMENT_RECEIPT" EntityType="Self.CUSTOMER_PAYMENT_RECEIPT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" EntityType="Self.CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" EntityType="Self.CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EXPORT_COMMODITIES_RECEIPT" EntityType="Self.EXPORT_COMMODITIES_RECEIPT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EXPORT_COMMODITIES_RECEIPT_DETAIL" EntityType="Self.EXPORT_COMMODITIES_RECEIPT_DETAIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="IMPORT_COMMODITIES_RECEIPT" EntityType="Self.IMPORT_COMMODITIES_RECEIPT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="IMPORT_COMMODITIES_RECEIPT_DETAIL" EntityType="Self.IMPORT_COMMODITIES_RECEIPT_DETAIL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LINK_PITCH_DETAILS" EntityType="Self.LINK_PITCH_DETAILS" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PITCH" EntityType="Self.PITCH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PITCH_TYPE" EntityType="Self.PITCH_TYPE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USER_ROLES" EntityType="Self.USER_ROLES" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="fk_BOOKING_CUSTOMER" Association="Self.fk_BOOKING_CUSTOMER">
-      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
-      <End Role="BOOKING" EntitySet="BOOKING" />
-    </AssociationSet>
     <AssociationSet Name="fk_BOOKING_PITCH" Association="Self.fk_BOOKING_PITCH">
       <End Role="PITCH" EntitySet="PITCH" />
       <End Role="BOOKING" EntitySet="BOOKING" />
@@ -441,21 +496,17 @@
       <End Role="USERS" EntitySet="USERS" />
       <End Role="BOOKING" EntitySet="BOOKING" />
     </AssociationSet>
-    <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_CUSTOMER" Association="Self.fk_CUSTOMER_PAYMENT_RECEIPT_CUSTOMER">
-      <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+    <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_BOOKING" Association="Self.fk_CUSTOMER_PAYMENT_RECEIPT_BOOKING">
+      <End Role="BOOKING" EntitySet="BOOKING" />
       <End Role="CUSTOMER_PAYMENT_RECEIPT" EntitySet="CUSTOMER_PAYMENT_RECEIPT" />
     </AssociationSet>
     <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_COMMODITIES" Association="Self.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_COMMODITIES">
       <End Role="COMMODITIES" EntitySet="COMMODITIES" />
       <End Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" EntitySet="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" />
     </AssociationSet>
-    <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_BOOKING" Association="Self.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_BOOKING">
-      <End Role="BOOKING" EntitySet="BOOKING" />
-      <End Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" EntitySet="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" />
-    </AssociationSet>
-    <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_CUSTOMER_PAYMENT_RECEIPT" Association="Self.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH_CUSTOMER_PAYMENT_RECEIPT">
+    <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_CUSTOMER_PAYMENT_RECEIPT" Association="Self.fk_CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES_CUSTOMER_PAYMENT_RECEIPT">
       <End Role="CUSTOMER_PAYMENT_RECEIPT" EntitySet="CUSTOMER_PAYMENT_RECEIPT" />
-      <End Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" EntitySet="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH" />
+      <End Role="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" EntitySet="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES" />
     </AssociationSet>
     <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_USER_CREATE" Association="Self.fk_CUSTOMER_PAYMENT_RECEIPT_USER_CREATE">
       <End Role="USERS" EntitySet="USERS" />
@@ -464,6 +515,22 @@
     <AssociationSet Name="fk_CUSTOMER_PAYMENT_RECEIPT_USER_UPDATE" Association="Self.fk_CUSTOMER_PAYMENT_RECEIPT_USER_UPDATE">
       <End Role="USERS" EntitySet="USERS" />
       <End Role="CUSTOMER_PAYMENT_RECEIPT" EntitySet="CUSTOMER_PAYMENT_RECEIPT" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EXPORT_COMMODITIES_RECEIPT_CREATE_USER" Association="Self.fk_EXPORT_COMMODITIES_RECEIPT_CREATE_USER">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="EXPORT_COMMODITIES_RECEIPT" EntitySet="EXPORT_COMMODITIES_RECEIPT" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EXPORT_COMMODITIES_RECEIPT_DETAIL" Association="Self.fk_EXPORT_COMMODITIES_RECEIPT_DETAIL">
+      <End Role="EXPORT_COMMODITIES_RECEIPT" EntitySet="EXPORT_COMMODITIES_RECEIPT" />
+      <End Role="EXPORT_COMMODITIES_RECEIPT_DETAIL" EntitySet="EXPORT_COMMODITIES_RECEIPT_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EXPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES" Association="Self.fk_EXPORT_COMMODITIES_RECEIPT_DETAIL_COMMODITIES">
+      <End Role="COMMODITIES" EntitySet="COMMODITIES" />
+      <End Role="EXPORT_COMMODITIES_RECEIPT_DETAIL" EntitySet="EXPORT_COMMODITIES_RECEIPT_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="fk_EXPORT_COMMODITIES_RECEIPT_UPDATE_USER" Association="Self.fk_EXPORT_COMMODITIES_RECEIPT_UPDATE_USER">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="EXPORT_COMMODITIES_RECEIPT" EntitySet="EXPORT_COMMODITIES_RECEIPT" />
     </AssociationSet>
     <AssociationSet Name="fk_IMPORT_COMMODITIES_RECEIPT_COMMODITIES_PROVIDER" Association="Self.fk_IMPORT_COMMODITIES_RECEIPT_COMMODITIES_PROVIDER">
       <End Role="COMMODITIES_PROVIDER" EntitySet="COMMODITIES_PROVIDER" />

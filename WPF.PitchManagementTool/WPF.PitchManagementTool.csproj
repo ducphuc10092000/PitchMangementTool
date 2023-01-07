@@ -44,21 +44,47 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>..\packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=2.0.9.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.2.0.9\lib\net462\MaterialDesignColors.dll</HintPath>
     </Reference>
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.6.1.0, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.4.6.1\lib\net462\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1001\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
+    <Reference Include="OxyPlot, Version=2.1.2.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Core.2.1.2\lib\net45\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Wpf, Version=2.1.2.0, Culture=neutral, PublicKeyToken=75e952ba404cdbb0, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Wpf.2.1.2\lib\net45\OxyPlot.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Wpf.Shared, Version=2.1.2.0, Culture=neutral, PublicKeyToken=75e952ba404cdbb0, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Wpf.Shared.2.1.2\lib\net45\OxyPlot.Wpf.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Drawing.Common.6.0.0\lib\net461\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.1\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -81,11 +107,20 @@
     <Compile Include="ViewModels\Account_ViewModels\AccountManage_Usercontrol_ViewModel.cs" />
     <Compile Include="ViewModels\Account_ViewModels\AdminSide_Usercontrol_ViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Booking_ViewModels\AddNewBookingPitch_Window_Viewmodel.cs" />
+    <Compile Include="ViewModels\Booking_ViewModels\AddNewBooking_Window_ViewModel.cs" />
+    <Compile Include="ViewModels\Booking_ViewModels\BookingManage_Usercontrol_ViewModel.cs" />
+    <Compile Include="ViewModels\Booking_ViewModels\EditBooking_Window_ViewModel.cs" />
+    <Compile Include="ViewModels\Debt_ViewModels\DebtManage_Usercontrol_Viewmodel.cs" />
     <Compile Include="ViewModels\ImageProvider.cs" />
+    <Compile Include="ViewModels\Inventory_ViewModels\InventoryManage_Usercontrol_Viewmodel.cs" />
     <Compile Include="ViewModels\Login_ViewModels\Login_Window_ViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Pitch_ViewModels\AddNewPitch_Window_ViewModel.cs" />
+    <Compile Include="ViewModels\Pitch_ViewModels\DetailsPitch_Window_ViewModel.cs" />
     <Compile Include="ViewModels\Pitch_ViewModels\PitchManage_Usercontrol_ViewModel.cs" />
+    <Compile Include="ViewModels\Receipt_ViewModels\EditReceipt_Window_ViewModel.cs" />
+    <Compile Include="ViewModels\Receipt_ViewModels\ReceiptManage_Usercontrol_Viewmodel.cs" />
     <Compile Include="Views\Account_Views\AccountManage_Usercontrol.xaml.cs">
       <DependentUpon>AccountManage_Usercontrol.xaml</DependentUpon>
     </Compile>
@@ -95,8 +130,35 @@
     <Compile Include="Views\Account_Views\UserSide_AccountManage_Usercontrol.xaml.cs">
       <DependentUpon>UserSide_AccountManage_Usercontrol.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Booking_Views\AddNewBookingPitch_Window.xaml.cs">
+      <DependentUpon>AddNewBookingPitch_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Booking_Views\AddNewBooking_Window.xaml.cs">
+      <DependentUpon>AddNewBooking_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Booking_Views\BookingManage_Usercontrol.xaml.cs">
+      <DependentUpon>BookingManage_Usercontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Booking_Views\Confirm_EditBooking_Window.xaml.cs">
+      <DependentUpon>Confirm_EditBooking_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Booking_Views\EditBooking_Window.xaml.cs">
+      <DependentUpon>EditBooking_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Booking_Views\ListBookingPitch_Window.xaml.cs">
+      <DependentUpon>ListBookingPitch_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dashboard_Views\DashBoard_Usercontrol.xaml.cs">
       <DependentUpon>DashBoard_Usercontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Debt_Views\DebtManage_Usercontrol.xaml.cs">
+      <DependentUpon>DebtManage_Usercontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Inventory_Views\AddNewImportCommoditiesReceipt_Window.xaml.cs">
+      <DependentUpon>AddNewImportCommoditiesReceipt_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Inventory_Views\InventoryManage_Usercontrol.xaml.cs">
+      <DependentUpon>InventoryManage_Usercontrol.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Login_Views\Login_Window.xaml.cs">
       <DependentUpon>Login_Window.xaml</DependentUpon>
@@ -104,11 +166,32 @@
     <Compile Include="Views\Pitch_Views\AddNewPitch_Window.xaml.cs">
       <DependentUpon>AddNewPitch_Window.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pitch_Views\DetailsPitch_Window.xaml.cs">
+      <DependentUpon>DetailsPitch_Window.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pitch_Views\PitchLinkList_Window.xaml.cs">
       <DependentUpon>PitchLinkList_Window.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pitch_Views\PitchManage_Usercontrol.xaml.cs">
       <DependentUpon>PitchManage_Usercontrol.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Receipt_Views\AddCommoditiesToReceipt_Window.xaml.cs">
+      <DependentUpon>AddCommoditiesToReceipt_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Receipt_Views\ConfirmPaymentReceipt_Window.xaml.cs">
+      <DependentUpon>ConfirmPaymentReceipt_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Receipt_Views\EditCommoditiesDetailReceipt_Window.xaml.cs">
+      <DependentUpon>EditCommoditiesDetailReceipt_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Receipt_Views\EditReceipt_Window.xaml.cs">
+      <DependentUpon>EditReceipt_Window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Receipt_Views\ReceiptManage_UserControl.xaml.cs">
+      <DependentUpon>ReceiptManage_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Setting_Views\SettingManage_Usercontrol.xaml.cs">
+      <DependentUpon>SettingManage_Usercontrol.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -138,7 +221,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Booking_Views\AddNewBookingPitch_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Booking_Views\AddNewBooking_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Booking_Views\BookingManage_Usercontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Booking_Views\Confirm_EditBooking_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Booking_Views\EditBooking_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Booking_Views\ListBookingPitch_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Dashboard_Views\DashBoard_Usercontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Debt_Views\DebtManage_Usercontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Inventory_Views\AddNewImportCommoditiesReceipt_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Inventory_Views\InventoryManage_Usercontrol.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -150,11 +269,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pitch_Views\DetailsPitch_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pitch_Views\PitchLinkList_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pitch_Views\PitchManage_Usercontrol.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Receipt_Views\AddCommoditiesToReceipt_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Receipt_Views\ConfirmPaymentReceipt_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Receipt_Views\EditCommoditiesDetailReceipt_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Receipt_Views\EditReceipt_Window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Receipt_Views\ReceiptManage_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Setting_Views\SettingManage_Usercontrol.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,13 +333,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Booking_Views\" />
-    <Folder Include="Views\Debt_Views\" />
-    <Folder Include="Views\Inventory_Views\" />
-    <Folder Include="Views\Receipt_Views\" />
-    <Folder Include="Views\Setting_Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Domain.PitchManagementTool\Domain.PitchManagementTool.csproj">
       <Project>{BE6AA700-EF58-486A-8199-0290DCBEF532}</Project>

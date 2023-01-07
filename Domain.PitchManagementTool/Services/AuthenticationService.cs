@@ -19,6 +19,7 @@ namespace Domain.PitchManagementTool.Services
         {
             USER storedUser = userService.GetUserByUserName(username);
             IPasswordHasher _passwordHasher = new PasswordHasher();
+
             if (storedUser != null)
             {
 

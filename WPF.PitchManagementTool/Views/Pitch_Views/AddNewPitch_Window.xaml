@@ -119,26 +119,8 @@
                             Background="Transparent">
                         <materialDesign:PackIcon Kind="PencilPlus"
                                                  Height="20"
-                                                 Width="20"/>
+                                                 Width="20" />
                     </Button>
-                    <!--<ComboBox BorderBrush="LightGreen"
-                              x:Name="PitchLinkListComboBox1"
-                              BorderThickness="1"
-                              ItemsSource="{Binding PITCHLINKLISTCOMBOBOX1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                              materialDesign:HintAssist.Hint="Chọn sân liên kết"
-                              FontSize="15"
-                              Width="270"
-                              Margin="10,0,0,0"
-                              SelectedItem="{Binding selectedLinkPitch1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              IsEnabled="{Binding isEnableLinkPitch1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                        <behav:Interaction.Triggers>
-                            <behav:EventTrigger EventName="SelectionChanged">
-                                <behav:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=DataContext.SelectionPitchLinkChangedCommand1}"
-                                                           CommandParameter="{Binding ElementName=PitchLinkListComboBox1}" />
-                            </behav:EventTrigger>
-                        </behav:Interaction.Triggers>
-                    </ComboBox>-->
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="0,20,0,0"
@@ -179,24 +161,6 @@
                                                  Height="20"
                                                  Width="20" />
                     </Button>
-                    <!--<ComboBox BorderBrush="LightGreen"
-                              BorderThickness="1"
-                              x:Name="PitchLinkListComboBox2"
-                              ItemsSource="{Binding PITCHLINKLISTCOMBOBOX2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                              materialDesign:HintAssist.Hint="Chọn sân liên kết"
-                              FontSize="15"
-                              Width="270"
-                              Margin="10,0,0,0"
-                              SelectedItem="{Binding selectedLinkPitch2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              IsEnabled="{Binding isEnableLinkPitch2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                        <behav:Interaction.Triggers>
-                            <behav:EventTrigger EventName="SelectionChanged">
-                                <behav:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=DataContext.SelectionPitchLinkChangedCommand2}"
-                                                           CommandParameter="{Binding ElementName=PitchLinkListComboBox2, UpdateSourceTrigger=PropertyChanged}" />
-                            </behav:EventTrigger>
-                        </behav:Interaction.Triggers>
-                    </ComboBox>-->
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="0,20,0,0"
@@ -237,24 +201,6 @@
                                                  Height="20"
                                                  Width="20"/>
                     </Button>
-                    <!--<ComboBox BorderBrush="LightGreen"
-                              BorderThickness="1"
-                              x:Name="PitchLinkListComboBox3"
-                              ItemsSource="{Binding PITCHLINKLISTCOMBOBOX3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                              materialDesign:HintAssist.Hint="Chọn sân liên kết"
-                              FontSize="15"
-                              Width="270"
-                              Margin="10,0,0,0"
-                              SelectedItem="{Binding selectedLinkPitch3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                              IsEnabled="{Binding isEnableLinkPitch3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                        <behav:Interaction.Triggers>
-                            <behav:EventTrigger EventName="SelectionChanged">
-                                <behav:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}, Path=DataContext.SelectionPitchLinkChangedCommand3}"
-                                                           CommandParameter="{Binding ElementName=PitchLinkListComboBox3, UpdateSourceTrigger=PropertyChanged}" />
-                            </behav:EventTrigger>
-                        </behav:Interaction.Triggers>
-                    </ComboBox>-->
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="0,10,0,0"

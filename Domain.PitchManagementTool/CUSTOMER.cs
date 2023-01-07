@@ -14,22 +14,10 @@ namespace Domain.PitchManagementTool
     
     public partial class CUSTOMER
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CUSTOMER()
-        {
-            this.BOOKINGs = new HashSet<BOOKING>();
-            this.CUSTOMER_PAYMENT_RECEIPT = new HashSet<CUSTOMER_PAYMENT_RECEIPT>();
-        }
-    
         public int ID_CUSTOMER { get; set; }
         public string NAME_CUSTOMER { get; set; }
         public string PHONE_NUMBER_CUSTOMER { get; set; }
         public bool IS_DELETED { get; set; }
         public int DEBT_COST { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BOOKING> BOOKINGs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CUSTOMER_PAYMENT_RECEIPT> CUSTOMER_PAYMENT_RECEIPT { get; set; }
     }
 }

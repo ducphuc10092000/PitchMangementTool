@@ -1,5 +1,6 @@
 ﻿using Domain.PitchManagementTool;
 using Domain.PitchManagementTool.Services;
+using Domain.PitchManagementTool.Services.Customer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using WPF.PitchManagementTool.ViewModels.Account_ViewModels;
+using WPF.PitchManagementTool.ViewModels.Booking_ViewModels;
 using WPF.PitchManagementTool.ViewModels.Login_ViewModels;
 using WPF.PitchManagementTool.ViewModels.Pitch_ViewModels;
 using WPF.PitchManagementTool.Views.Account_Views;
+using WPF.PitchManagementTool.Views.Booking_Views;
 using WPF.PitchManagementTool.Views.Login_Views;
 using WPF.PitchManagementTool.Views.Pitch_Views;
 
@@ -23,10 +26,14 @@ namespace WPF.PitchManagementTool.ViewModels
         public ICommand LoadedWindowCommand { get; set; }
 
         private USER _loggedInAccount;
-        public USER loggedInAccount { get => _loggedInAccount; set { _loggedInAccount = value; OnPropertyChanged(); } }
+        public USER loggedInAccount { get => _loggedInAccount; set { _loggedInAccount = value; OnPropertyChanged(nameof(_loggedInAccount)); } }
 
         private bool _isLoaded;
         public bool IsLoaded { get => _isLoaded; set { _isLoaded = value; OnPropertyChanged(); } }
+
+
+        private bool _isManager;
+        public bool isManager { get => _isManager; set { _isManager = value; OnPropertyChanged(); } }
 
         #endregion
 
@@ -60,35 +67,37 @@ namespace WPF.PitchManagementTool.ViewModels
                 return true;
             }, (p) =>
             {
-                //Add New An USER
-                //UserService userService = new UserService();
-                //USER usernew = new USER();
-                //usernew.USERNAME = "admin";
-                //usernew.PASSWORD = "admin";
-                //usernew.ID_ROLE_NAME = 1;
-                //usernew.FULL_NAME = "Nguyễn Đức Phúc";
-
-                //AuthenticationService authenticationService = new AuthenticationService();
-                //authenticationService.Register(usernew.USERNAME, usernew.PASSWORD, usernew);
-
-
                 p.Hide();
+
                 Login_Window loginWindow = new Login_Window();
                 loginWindow.ShowDialog();
                 var login_WD_VM = loginWindow.DataContext as Login_Window_ViewModel;
                 loggedInAccount = login_WD_VM.Authentication_Login(loginWindow);
-                p.Show();
 
                 if (login_WD_VM.isCloseLoginWD == true)
                 {
-                    p.Close();
+
+                    if (login_WD_VM.Authentication_Login(loginWindow).ID_ROLE_NAME == 1)
+                    {
+                        isManager = true;
+                    }
+                    else
+                    {
+                        isManager = false;
+                    }
+
+
+                    loginWindow.Close();
                 }
+
+
+                p.Show();
             });
             #endregion
 
             #region Handle Binding Command Swap UserControl
             BtnDashBoardCommand = new RelayCommand<object>((p) =>
-            {
+            {  
                 return true;
             }, (p) =>
             {
@@ -112,6 +121,10 @@ namespace WPF.PitchManagementTool.ViewModels
             }, (p) =>
             {
                 Feature = (int)FEATURE.Booking;
+
+                BookingManage_Usercontrol bookingManage_UC = new BookingManage_Usercontrol();
+                var bookingManage_UC_VM = bookingManage_UC.DataContext as BookingManage_Usercontrol_ViewModel;
+                bookingManage_UC_VM.loggedInAccount = loggedInAccount;
             });
             BtnPrintingReceiptCommand = new RelayCommand<object>((p) =>
             {

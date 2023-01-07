@@ -3,7 +3,11 @@
                     xmlns:viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels"
                     xmlns:login_viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels.Login_ViewModels"
                     xmlns:pitchmanage_viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels.Pitch_ViewModels"
-                    xmlns:accountmanage_viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels.Account_ViewModels">
+                    xmlns:accountmanage_viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels.Account_ViewModels"
+                    xmlns:bookingmanage_viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels.Booking_ViewModels"
+                    xmlns:receiptmanage_viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels.Receipt_ViewModels"
+                    xmlns:inventorymanage_viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels.Inventory_ViewModels"
+                    xmlns:debtmanage_viewmodel="clr-namespace:WPF.PitchManagementTool.ViewModels.Debt_ViewModels">
     <viewmodel:MainViewModel x:Key="Main_VM"></viewmodel:MainViewModel>
     
     <login_viewmodel:Login_Window_ViewModel x:Key="login_WD_VM"></login_viewmodel:Login_Window_ViewModel>
@@ -13,4 +17,13 @@
     
     <accountmanage_viewmodel:AdminSide_Usercontrol_ViewModel x:Key="adminSide_UC_VM"></accountmanage_viewmodel:AdminSide_Usercontrol_ViewModel>
     <accountmanage_viewmodel:AccountManage_Usercontrol_ViewModel x:Key="accountManage_UC_VM"></accountmanage_viewmodel:AccountManage_Usercontrol_ViewModel>
+
+    <bookingmanage_viewmodel:BookingManage_Usercontrol_ViewModel x:Key="bookingManage_UC_VM"></bookingmanage_viewmodel:BookingManage_Usercontrol_ViewModel>
+    <bookingmanage_viewmodel:AddNewBookingPitch_Window_Viewmodel x:Key="addNewBookingPitch_WD_VM"></bookingmanage_viewmodel:AddNewBookingPitch_Window_Viewmodel>
+    <bookingmanage_viewmodel:AddNewBooking_Window_ViewModel x:Key="addNewBooking_WD_VM"></bookingmanage_viewmodel:AddNewBooking_Window_ViewModel>
+    <receiptmanage_viewmodel:ReceiptManage_Usercontrol_Viewmodel x:Key="receiptManage_UC_VM"></receiptmanage_viewmodel:ReceiptManage_Usercontrol_Viewmodel>
+    <receiptmanage_viewmodel:EditReceipt_Window_ViewModel x:Key="editReceipt_WD_VM"></receiptmanage_viewmodel:EditReceipt_Window_ViewModel>
+    <inventorymanage_viewmodel:InventoryManage_Usercontrol_Viewmodel x:Key="inventoryManage_UC_VM"></inventorymanage_viewmodel:InventoryManage_Usercontrol_Viewmodel>
+
+    <debtmanage_viewmodel:DebtManage_Usercontrol_Viewmodel x:Key="debtManage_UC_VM"></debtmanage_viewmodel:DebtManage_Usercontrol_Viewmodel>
 </ResourceDictionary>

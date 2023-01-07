@@ -17,7 +17,12 @@
         Width="1600"
         xmlns:Dashboard_UC="clr-namespace:WPF.PitchManagementTool.Views.Dashboard_Views"
         xmlns:Pitch_UC="clr-namespace:WPF.PitchManagementTool.Views.Pitch_Views"
-        xmlns:Account_UC="clr-namespace:WPF.PitchManagementTool.Views.Account_Views">
+        xmlns:Account_UC="clr-namespace:WPF.PitchManagementTool.Views.Account_Views"
+        xmlns:Booking="clr-namespace:WPF.PitchManagementTool.Views.Booking_Views"
+        xmlns:Receipt_UC="clr-namespace:WPF.PitchManagementTool.Views.Receipt_Views"
+        xmlns:Inventory_UC="clr-namespace:WPF.PitchManagementTool.Views.Inventory_Views"
+        xmlns:Debt_UC="clr-namespace:WPF.PitchManagementTool.Views.Debt_Views"
+        xmlns:Setting_UC="clr-namespace:WPF.PitchManagementTool.Views.Setting_Views">
     <behav:Interaction.Triggers>
         <behav:EventTrigger EventName="Loaded">
             <behav:InvokeCommandAction Command="{Binding LoadedWindowCommand}"
@@ -113,6 +118,7 @@
                     <Button Height="36"
                             BorderThickness="0"
                             FontWeight="Bold"
+                            IsEnabled="{Binding isManager}"
                             Command="{Binding BtnPitchManageCommand}">
                         <StackPanel Orientation="Horizontal">
                             <!--Content-->
@@ -220,7 +226,7 @@
                             Command="{Binding BtnPrintingReceiptCommand}">
                         <StackPanel Orientation="Horizontal">
                             <!--Content-->
-                            <TextBlock Text="In hóa đơn"
+                            <TextBlock Text="Hóa đơn - Thanh Toán"
                                        FontSize="15">
                                 <TextBlock.Style>
                                     <Style TargetType="TextBlock">
@@ -320,6 +326,7 @@
                         BorderThickness="2">
                     <Button Height="36"
                             BorderThickness="0"
+                            IsEnabled="{Binding isManager}"
                             FontWeight="Bold"
                             Command="{Binding BtnDebtManageCommand}">
                         <StackPanel Orientation="Horizontal">
@@ -372,6 +379,7 @@
                         BorderThickness="2">
                     <Button Height="36"
                             BorderThickness="0"
+                            IsEnabled="{Binding isManager}"
                             FontWeight="Bold"
                             Command="{Binding BtnSettingCommand}">
                         <StackPanel Orientation="Horizontal">
@@ -514,7 +522,103 @@
             </Grid>
         </Border>
 
-        <!--PITCHMANAGE USERCONTROL-->
+        <!--BOOKINGMANAGE USERCONTROL-->
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility"
+                                Value="Hidden"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Feature}"
+                                         Value="2">
+                                <Setter Property="Visibility"
+                                        Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Booking:BookingManage_Usercontrol></Booking:BookingManage_Usercontrol>
+            </Grid>
+        </Border>
+        <!--RECEIPT USERCONTROL-->
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility"
+                                Value="Hidden"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Feature}"
+                                         Value="3">
+                                <Setter Property="Visibility"
+                                        Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Receipt_UC:ReceiptManage_UserControl></Receipt_UC:ReceiptManage_UserControl>
+            </Grid>
+        </Border>
+        <!--INVENTORYMANAGE USERCONTROL-->
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility"
+                                Value="Hidden"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Feature}"
+                                         Value="4">
+                                <Setter Property="Visibility"
+                                        Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Inventory_UC:InventoryManage_Usercontrol></Inventory_UC:InventoryManage_Usercontrol>
+            </Grid>
+        </Border>
+        <!--DebtManage USERCONTROL-->
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility"
+                                Value="Hidden"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Feature}"
+                                         Value="5">
+                                <Setter Property="Visibility"
+                                        Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Debt_UC:DebtManage_Usercontrol></Debt_UC:DebtManage_Usercontrol>
+            </Grid>
+        </Border>
+        <!--DebtManage USERCONTROL-->
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility"
+                                Value="Hidden"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Feature}"
+                                         Value="6">
+                                <Setter Property="Visibility"
+                                        Value="Visible"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Setting_UC:SettingManage_Usercontrol></Setting_UC:SettingManage_Usercontrol>
+            </Grid>
+        </Border>
+
+        <!--ACCOUNTMANAGE USERCONTROL-->
         <Border Grid.Row="1">
             <Grid>
                 <Grid.Style>

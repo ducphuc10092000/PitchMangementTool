@@ -74,10 +74,13 @@
     <Compile Include="CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH.cs">
+    <Compile Include="DataProvider.cs" />
+    <Compile Include="EXPORT_COMMODITIES_RECEIPT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataProvider.cs" />
+    <Compile Include="EXPORT_COMMODITIES_RECEIPT_DETAIL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="IMPORT_COMMODITIES_RECEIPT.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -120,9 +123,12 @@
     <Compile Include="Services\Pitch_Services\PitchService.cs" />
     <Compile Include="Services\Pitch_Services\PitchType_Service.cs" />
     <Compile Include="Services\Receipt_Services\ReceiptService.cs" />
-    <Compile Include="Services\Receipt_Services\Receipt_Detail_AccompaniedService_Service.cs" />
+    <Compile Include="Services\Receipt_Services\Receipt_Detail_Commodities_Service_Service.cs" />
     <Compile Include="Services\Receipt_Services\Receipt_Detail_UsedPitch_Service.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="USER.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -31,12 +31,14 @@ namespace Domain.PitchManagementTool
         public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
         public virtual DbSet<CUSTOMER_PAYMENT_RECEIPT> CUSTOMER_PAYMENT_RECEIPT { get; set; }
         public virtual DbSet<CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES> CUSTOMER_PAYMENT_RECEIPT_DETAIL_COMMODITIES { get; set; }
-        public virtual DbSet<CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH> CUSTOMER_PAYMENT_RECEIPT_DETAIL_USED_PITCH { get; set; }
+        public virtual DbSet<EXPORT_COMMODITIES_RECEIPT> EXPORT_COMMODITIES_RECEIPT { get; set; }
+        public virtual DbSet<EXPORT_COMMODITIES_RECEIPT_DETAIL> EXPORT_COMMODITIES_RECEIPT_DETAIL { get; set; }
         public virtual DbSet<IMPORT_COMMODITIES_RECEIPT> IMPORT_COMMODITIES_RECEIPT { get; set; }
         public virtual DbSet<IMPORT_COMMODITIES_RECEIPT_DETAIL> IMPORT_COMMODITIES_RECEIPT_DETAIL { get; set; }
         public virtual DbSet<LINK_PITCH_DETAILS> LINK_PITCH_DETAILS { get; set; }
         public virtual DbSet<PITCH> PITCHes { get; set; }
         public virtual DbSet<PITCH_TYPE> PITCH_TYPE { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<USER_ROLES> USER_ROLES { get; set; }
         public virtual DbSet<USER> USERS { get; set; }
     }
